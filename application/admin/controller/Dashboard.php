@@ -2,6 +2,7 @@
 
 namespace app\admin\controller;
 
+use app\admin\model\User;
 use app\common\controller\Backend;
 
 /**
@@ -29,7 +30,7 @@ class Dashboard extends Backend
         $hooks = config('addons.hooks');
         $uploadmode = isset($hooks['upload_config_init']) && $hooks['upload_config_init'] ? implode(',', $hooks['upload_config_init']) : 'local';
         $this->view->assign([
-            'totaluser'        => 35200,
+            'totaluser'        => User::count(),
             'totalviews'       => 219390,
             'totalorder'       => 32143,
             'totalorderamount' => 174800,

@@ -15,13 +15,15 @@ class ComposerStaticInitd15e2bd93c7f83bfccc320b8bde0c0e9
         '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
         '9b552a3cc426e3287cc811caefa3cf53' => __DIR__ . '/..' . '/topthink/think-helper/src/helper.php',
         '1cfd2761b63b0a29ed23657ea394cb2d' => __DIR__ . '/..' . '/topthink/think-captcha/src/helper.php',
-        '488987c28e9b5e95a1ce6b6bcb94606c' => __DIR__ . '/..' . '/karsonzhang/fastadmin-addons/src/common.php',
         '9e090711773bfc38738f5dbaee5a7f14' => __DIR__ . '/..' . '/overtrue/wechat/src/Payment/helpers.php',
+        '488987c28e9b5e95a1ce6b6bcb94606c' => __DIR__ . '/..' . '/karsonzhang/fastadmin-addons/src/common.php',
+        'ddc3cd2a04224f9638c5d0de6a69c7e3' => __DIR__ . '/..' . '/topthink/think-migration/src/config.php',
     );
 
     public static $prefixLengthsPsr4 = array (
         't' => 
         array (
+            'think\\migration\\' => 16,
             'think\\helper\\' => 13,
             'think\\composer\\' => 15,
             'think\\captcha\\' => 14,
@@ -40,6 +42,7 @@ class ComposerStaticInitd15e2bd93c7f83bfccc320b8bde0c0e9
             'Psr\\Log\\' => 8,
             'Psr\\Http\\Message\\' => 17,
             'Psr\\Container\\' => 14,
+            'Phinx\\' => 6,
         ),
         'O' => 
         array (
@@ -72,6 +75,10 @@ class ComposerStaticInitd15e2bd93c7f83bfccc320b8bde0c0e9
     );
 
     public static $prefixDirsPsr4 = array (
+        'think\\migration\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/topthink/think-migration/src',
+        ),
         'think\\helper\\' => 
         array (
             0 => __DIR__ . '/..' . '/topthink/think-helper/src',
@@ -120,6 +127,10 @@ class ComposerStaticInitd15e2bd93c7f83bfccc320b8bde0c0e9
         'Psr\\Container\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/container/src',
+        ),
+        'Phinx\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/topthink/think-migration/phinx/src/Phinx',
         ),
         'Overtrue\\Socialite\\' => 
         array (
@@ -180,13 +191,6 @@ class ComposerStaticInitd15e2bd93c7f83bfccc320b8bde0c0e9
             'PHPExcel' => 
             array (
                 0 => __DIR__ . '/..' . '/phpoffice/phpexcel/Classes',
-            ),
-        ),
-        'C' => 
-        array (
-            'Crada' => 
-            array (
-                0 => __DIR__ . '/..' . '/karsonzhang/fastadmin-apidoc',
             ),
         ),
     );

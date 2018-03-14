@@ -9,5 +9,4 @@ return array(
     'zpt\\anno' => array($vendorDir . '/zeptech/annotations'),
     'Pimple' => array($vendorDir . '/pimple/pimple/src'),
     'PHPExcel' => array($vendorDir . '/phpoffice/phpexcel/Classes'),
-    'Crada' => array($vendorDir . '/karsonzhang/fastadmin-apidoc'),
 );

@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'think\\migration\\' => array($vendorDir . '/topthink/think-migration/src'),
     'think\\helper\\' => array($vendorDir . '/topthink/think-helper/src'),
     'think\\composer\\' => array($vendorDir . '/topthink/think-installer/src'),
     'think\\captcha\\' => array($vendorDir . '/topthink/think-captcha/src'),
@@ -18,6 +19,7 @@ return array(
     'Psr\\Log\\' => array($vendorDir . '/psr/log/Psr/Log'),
     'Psr\\Http\\Message\\' => array($vendorDir . '/psr/http-message/src'),
     'Psr\\Container\\' => array($vendorDir . '/psr/container/src'),
+    'Phinx\\' => array($vendorDir . '/topthink/think-migration/phinx/src/Phinx'),
     'Overtrue\\Socialite\\' => array($vendorDir . '/overtrue/socialite/src'),
     'Overtrue\\Pinyin\\' => array($vendorDir . '/overtrue/pinyin/src'),
     'Monolog\\' => array($vendorDir . '/monolog/monolog/src/Monolog'),

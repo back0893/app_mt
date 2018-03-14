@@ -47,8 +47,13 @@ class Time
     public static function week()
     {
         $timestamp = time();
+        if(date('w')==1){
+            $start=strtotime(date('Y-m-d', strtotime("+0 week Monday", $timestamp)));
+        }else{
+            $start=strtotime(date('Y-m-d', strtotime("-1 week Monday", $timestamp)));
+        }
         return [
-            strtotime(date('Y-m-d', strtotime("+0 week Monday", $timestamp))),
+            $start,
             strtotime(date('Y-m-d', strtotime("+0 week Sunday", $timestamp))) + 24 * 3600 - 1
         ];
     }
