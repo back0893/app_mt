@@ -24,31 +24,33 @@ class History extends Api
         $owner=unserialize($user['owner']);
         $ownerMoney=0;
         $code=config('code');
+        $owner=empty($owner)?[]:$owner;
         foreach ($owner as $o){
             $ownerMoney+=$o['number']*$o['price'];
             $o['name']=$code[$o['code']];
             $o['money']=number_format($o['number']*$o['price']/100,2);
         }
-        $free=number_format($user['money']/100);
+        $free=number_format($user['money']/100,2);
         $totalMoney=number_format(($user['money']+$ownerMoney)/100,2);
         //总出金
-        $totalOut=Outting::where(['uid'=>$user['uid']])
+        $totalOut=Outting::where(['uid'=>$user['id']])
             ->count('money');
         $totalOut=number_format($totalOut/100,2);
         //交易订单
         $date=input('date','week');
         $model=new Trade();
         $history=$model->history($date);
-        return Response::success(['history'=>$history,'totalMoney'=>$totalMoney,'totalOut'=>$totalOut, 'free'=>$free]);
+        return Response::success('成功',['history'=>$history,'totalMoney'=>$totalMoney,'totalOut'=>$totalOut, 'free'=>$free]);
     }
     public function own(){
         $user=$this->auth->getUser();
         $owner=unserialize($user['owner']);
         $code=config('code');
-        foreach ($owner as &$o){
-            $o['name']=$code[$o['code']];
-            $o['money']=number_format($o['number']*$o['price']/100,2);
+        $owner=empty($owner)?[]:$owner;
+        foreach ($owner as $k=>&$o){
+            $o['name']=$code[$k];
+            $o['money']=$o['number']*$o['price'];
         }
-        return Response::success(['own'=>$owner]);
+        return Response::success('成功',['own'=>$owner]);
     }
 }

@@ -10,16 +10,20 @@ class Outting extends Model
     protected $name = 'outting';
     
     // 自动写入时间戳字段
-    protected $autoWriteTimestamp = false;
+    protected $autoWriteTimestamp = true;
 
     // 定义时间戳字段名
-    protected $createTime = false;
+    protected $createTime = 'date';
     protected $updateTime = false;
     
     // 追加属性
     protected $append = [
 
     ];
+    protected $insert=['tradeId'];
+    protected function setTradeIdAttr(){
+        return uniqid('out_');
+    }
     
 
     
