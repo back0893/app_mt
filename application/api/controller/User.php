@@ -6,6 +6,7 @@ use app\common\controller\Api;
 use app\common\library\Email;
 use app\common\library\Sms;
 use fast\Random;
+use think\captcha\Captcha;
 use think\Validate;
 
 /**
@@ -14,7 +15,7 @@ use think\Validate;
 class User extends Api
 {
 
-    protected $noNeedLogin = ['login', 'mobilelogin', 'register', 'resetpwd', 'changeemail', 'changemobile', 'third'];
+    protected $noNeedLogin = ['login','l', 'mobilelogin', 'register', 'resetpwd', 'changeemail', 'changemobile', 'third','chapter'];
     protected $noNeedRight = '*';
 
     public function _initialize()
@@ -158,21 +159,16 @@ class User extends Api
     public function profile()
     {
         $user = $this->auth->getUser();
-        $username = $this->request->request('username');
-        $nickname = $this->request->request('nickname');
-        $bio = $this->request->request('bio');
-        $avatar = $this->request->request('avatar');
-        $exists = \app\common\model\User::where('username', $username)->where('id', '<>', $this->auth->id)->find();
+        $email = $this->request->request('email');
+        $data=input('','','trim');
+        $exists = \app\common\model\User::where('email', $email)->where('id', '<>', $this->auth->id)->find();
         if ($exists)
         {
-            $this->error(__('Username already exists'));
+            $this->error('邮箱重复');
         }
-        $user->username = $username;
-        $user->nickname = $nickname;
-        $user->bio = $bio;
-        $user->avatar = $avatar;
-        $user->save();
-        $this->success();
+        $user->allowField('bio,birthday,email,gender,nickname')
+            ->save($data);
+        $this->success('成功');
     }
 
     /**
@@ -326,5 +322,72 @@ class User extends Api
             $this->error($this->auth->getError());
         }
     }
+    /**
+     * 获取验证码
+     */
+    public function chapter(){
+        $captcha=new Captcha(['length'=>4,'useCurve'=>false]);
+        return $captcha->entry();
+    }
 
+    /**
+     * 修改头像
+     */
+    public function icon(){
+        $path=ROOT_PATH.'public/icon';
+        $file=$this->request->file('file');
+        if(!empty($file)){
+            $path=$file->move($path);
+            $icon='/icon/'.$path->getSaveName();
+            $user=$this->auth->getUser();
+            $r=$user->save(['avatar'=>$icon]);
+            if($r!==false){
+                return $this->success('成功',['avatar'=>$this->request->domain().$icon]);
+            }
+        }
+        return $this->error('没有图片上传');
+    }
+
+    /**
+     * 修改密码
+     */
+    public function updatePassword(){
+        $oldPassword=input('nowpass','');
+        $newPassword=input('pass','');
+        $r=$this->auth->changepwd($newPassword,$oldPassword);
+        if($r){
+            return $this->success('修改密码成功');
+        }
+        return $this->error('修改密码失败');
+    }
+    public function l(){
+        $this->auth->direct(2);
+        $ret = $this->auth->changepwd('123456', '');
+    }
+
+    /**
+     * 获取钻出,转入的记录
+     * 因为2表的字段长不一样不能使用onion
+     */
+    public function getIO(){
+        $uid=$this->auth->id;
+        $where=['uid'=>$uid,'readed'=>0];
+        $commings=\app\admin\model\Comming::where($where)
+            ->order('date desc')
+            ->select();
+        $outtings=\app\admin\model\Outting::where($where)
+            ->order('date desc')
+            ->select();
+        $tmp=[];
+        foreach ($commings as $comming){
+            $tmp[]=['format'=>$comming->format,'date'=>$comming->date,'status'=>"0_{$comming->id}"];
+        }
+        foreach ($outtings as $outting){
+            $tmp[]=['format'=>$outting->format,'date'=>$outting->date,'status'=>"1_{$outting->id}"];
+        }
+        usort($tmp,function($a,$b){
+           return $a['date']<$b['date']?-1:1;
+        });
+        return $this->success('',$tmp);
+    }
 }

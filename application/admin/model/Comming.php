@@ -2,9 +2,11 @@
 
 namespace app\admin\model;
 
+use app\admin\iface\IFormat;
 use think\Model;
+use think\Request;
 
-class Comming extends Model
+class Comming extends Model implements IFormat
 {
     // 表名
     protected $name = 'comming';
@@ -23,14 +25,14 @@ class Comming extends Model
     protected function setTradeIdAttr(){
         return uniqid('in_');
     }
-    
-
-    
-
-
-
-
-
+    public function getFormatAttr($value,$data)
+    {
+        $date=$this->getAttr('date');
+        $money=number_format($this->getAttr('money')/100,2);
+        $payed=$this->getAttr('payed')?'成功':'失败';
+        $charge=number_format($this->getAttr('charge')/100,2);
+        $line="{$payed}于{$date}转入{$money},金额变化为{$charge}";
+    }
 
 
 }

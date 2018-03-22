@@ -7,9 +7,7 @@ use think\Model;
 
 class Trade extends Model
 {
-    protected $autoWriteTimestamp=true;
-    protected $createTime='createtime';
-    protected $updateTime=false;
+    protected $dateFormat='Y-m-d H:i:s';
     protected $codeText;
     public function __construct($data = [])
     {
@@ -21,10 +19,13 @@ class Trade extends Model
         return $this->codeText[$value];
     }
     protected function getStatusAttr($value){
-        $text=[1=>'卖出',0=>'买入'];
+        $text=[2=>'卖出',1=>'买入'];
         return $text[$value];
     }
-    public function history($date){
+    protected function getCreatetimeAttr($value){
+        return date($this->dateFormat,$value);
+    }
+    public function history($date,$uid){
         $date=strtolower($date);
         switch ($date){
             case 'year':
@@ -36,6 +37,9 @@ class Trade extends Model
             default:
                 list($start,$end)=Time::week();
         }
-        return $this->where(['createtime'=>['>= time'=>$start,'<= time'=>$end],'and']);
+        return $this->where('createtime',['>= time',$start],['<= time',$end],'and')
+            ->field('id,uid',true)
+            ->where(['uid'=>$uid])
+            ->select();
     }
 }

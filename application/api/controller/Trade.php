@@ -39,6 +39,7 @@ class Trade extends Api
             'status'=>1,
             'code'=>$code,
             'uid'=>$user->id,
+            'createtime'=>time()
         ];
         //检查用户是否有足够的钱
         $money=$user->money-$data['money'];
@@ -61,7 +62,7 @@ class Trade extends Api
         Db::startTrans();
         try {
             $r1=$user->save();
-            $r2=$tradeModel->isUpdate(false)
+            $r2=$tradeModel
                 ->allowField(true)
                 ->save($data);
             if($r1===false || $r2===false){

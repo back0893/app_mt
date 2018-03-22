@@ -25,9 +25,9 @@ class History extends Api
         $ownerMoney=0;
         $code=config('code');
         $owner=empty($owner)?[]:$owner;
-        foreach ($owner as $o){
+        foreach ($owner as $c=>$o){
             $ownerMoney+=$o['number']*$o['price'];
-            $o['name']=$code[$o['code']];
+            $o['name']=$code[$c];
             $o['money']=number_format($o['number']*$o['price']/100,2);
         }
         $free=number_format($user['money']/100,2);
@@ -39,8 +39,8 @@ class History extends Api
         //交易订单
         $date=input('date','week');
         $model=new Trade();
-        $history=$model->history($date);
-        return Response::success('成功',['history'=>$history,'totalMoney'=>$totalMoney,'totalOut'=>$totalOut, 'free'=>$free]);
+        $history=$model->history($date,$this->auth->id);
+        return $this->success('成功',['history'=>$history,'totalMoney'=>$totalMoney,'totalOut'=>$totalOut, 'free'=>$free]);
     }
     public function own(){
         $user=$this->auth->getUser();
