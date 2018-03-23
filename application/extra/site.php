@@ -13,13 +13,7 @@ return array (
     'frontend' => 'zh-cn',
   ),
   'fixedpage' => 'dashboard',
-  'categorytype' => 
-  array (
-    'default' => 'Default',
-    'page' => 'Page',
-    'article' => 'Article',
-    'test' => 'Test',
-  ),
+  'categorytype' => [],
   'configgroup' => 
   array (
     'basic' => 'Basic',

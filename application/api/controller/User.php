@@ -2,6 +2,7 @@
 
 namespace app\api\controller;
 
+use app\api\model\Bank;
 use app\common\controller\Api;
 use app\common\library\Email;
 use app\common\library\Sms;
@@ -49,6 +50,10 @@ class User extends Api
         if ($ret)
         {
             $data = ['userinfo' => $this->auth->getUserinfo()];
+            $row=Bank::get(['uid'=>$this->auth->id]);
+            $bank=$row->allowField(['code','name','user_code'])
+                ->toArray();
+            $data['bank']=$bank;
             $this->success(__('Logged in successful'), $data);
         }
         else
@@ -389,5 +394,25 @@ class User extends Api
            return $a['date']<$b['date']?-1:1;
         });
         return $this->success('',$tmp);
+    }
+
+
+    /**
+     * 绑定用户银行卡
+     */
+    public function bindBank(){
+        $data=input('','','trim');
+        $data['uid']=$this->auth->id;
+        $row=Bank::get(['uid'=>$this->auth->id]);
+        if(empty($row)){
+            $row=new Bank();
+        }
+        $r=$row->allowField('uid,name,code,user_code')
+            ->validate(true)
+            ->save($data);
+        if($r===false){
+            return $this->error('绑定失败');
+        }
+        return $this->success('绑定成功');
     }
 }

@@ -103,13 +103,16 @@ var $=layui.$;
 form.on('submit(*)', function(data){
 	//脑残了,,这里阻止,默认,写成自己的不久ok
 	var index=layer.load(2,{time:10*1000})
-	$.post(config.domain+'/api/user/login.html',$.param(data.field),function(response){
-		layer.close(index);
+	$.post(config.domain+'api/user/login.html',$.param(data.field),function(response){
 		if(response.code==1){
 			config.userInfo=response.data.userinfo;
 			localStorage.setItem('userInfo',JSON.stringify(config.userInfo));
+			localStorage.setItem('bank',JSON.stringify(response.data.bank));
 			localStorage.setItem('token',config.userInfo.token);
-			window.location.href='index.html';
+			setTimeout(function(){
+				layer.close(index);
+				window.location.href='index.html';
+			},1000)
 		}
 		else{
 			layer.alert('登录失败:'+response.msg);

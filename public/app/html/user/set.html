@@ -95,7 +95,7 @@
         <li class="layui-this" lay-id="info">我的资料</li>
         <li lay-id="avatar">头像</li>
         <li lay-id="pass">密码</li>
-        <li lay-id="bind">帐号绑定</li>
+        <li lay-id="bind">绑定银行卡</li>
       </ul>
       <div class="layui-tab-content" style="padding: 20px 0;">
         <div class="layui-form layui-form-pane layui-tab-item layui-show">
@@ -176,24 +176,29 @@
           </div>
           
           <div class="layui-form layui-form-pane layui-tab-item">
-            <ul class="app-bind">
-              <li class="fly-msg app-havebind">
-                <i class="iconfont icon-qq"></i>
-                <span>已成功绑定，您可以使用QQ帐号直接登录Fly社区，当然，您也可以</span>
-                <a href="javascript:;" class="acc-unbind" type="qq_id">解除绑定</a>
-                
-                <!-- <a href="" onclick="layer.msg('正在绑定微博QQ', {icon:16, shade: 0.1, time:0})" class="acc-bind" type="qq_id">立即绑定</a>
-                <span>，即可使用QQ帐号登录Fly社区</span> -->
-              </li>
-              <li class="fly-msg">
-                <i class="iconfont icon-weibo"></i>
-                <!-- <span>已成功绑定，您可以使用微博直接登录Fly社区，当然，您也可以</span>
-                <a href="javascript:;" class="acc-unbind" type="weibo_id">解除绑定</a> -->
-                
-                <a href="" class="acc-weibo" type="weibo_id"  onclick="layer.msg('正在绑定微博', {icon:16, shade: 0.1, time:0})" >立即绑定</a>
-                <span>，即可使用微博帐号登录Fly社区</span>
-              </li>
-            </ul>
+          	 <form method="post">
+            <div class="layui-form-item">
+              <label for="L_name" class="layui-form-label">持卡人姓名</label>
+              <div class="layui-input-inline">
+                <input type="text" id="L_name" name="name" required lay-verify="required" autocomplete="off" value="" class="layui-input">
+              </div>
+            </div>
+            <div class="layui-form-item">
+              <label for="L_code" class="layui-form-label">银行卡号</label>
+              <div class="layui-input-inline">
+                <input type="text" id="L_code" name="code" required lay-verify="required" autocomplete="off" value="" class="layui-input">
+              </div>
+            </div>
+            <div class="layui-form-item">
+              <label for="L_user_code" class="layui-form-label">身份证</label>
+              <div class="layui-input-inline">
+                <input type="text" id="L_user_code" name="user_code" autocomplete="off" value="" class="layui-input">
+              </div>
+            </div>
+            <div class="layui-form-item">
+              <button class="layui-btn" key="set-mine" lay-filter="bank" lay-submit>绑定</button>
+            </div>
+          </div>
           </div>
         </div>
 
@@ -227,10 +232,15 @@ layui.use('form',function(){
 	var $=layui.$;
 	window.$=$;
 	var userInfo=JSON.parse(localStorage.getItem('userInfo'));
+	var bank=JSON.parse(localStorage.getItem('bank'));
 	$('#L_email').val(userInfo.email);
 	$('#L_nickname').val(userInfo.nickname);
 	$('#L_birthday').val(userInfo.birthday);
 	$(':radio:eq('+userInfo.gender+')').prop('checked',true);
+	$('#L_name').val(bank.name);
+	$('#L_code').val(bank.code);
+	$('#L_user_code').val(bank.user_code);
+	
 	form.render('radio');
 	$('#L_bio').val(userInfo.bio);
 	form.on('submit(info)',function(data){
@@ -261,6 +271,20 @@ layui.use('form',function(){
 				else{
 					layer.alert('修改密码失败');
 				}
+		});
+		return false;
+	});
+	form.on('submit(bank)',function(data){
+		var token=localStorage.getItem('token');
+		var tmp=$.extend(data.field,{token:token});
+		$.post(config.domain+'/api/user/bindBank.html',tmp,function(response){
+			if(response.code){
+				layer.alert('绑定成功');
+				localStorage.setItem('bank',JSON.stringify(data.field));
+			}
+			else{
+				layer.alert('绑定失败');
+			}
 		});
 		return false;
 	})
