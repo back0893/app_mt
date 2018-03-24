@@ -1,3 +1,3 @@
 var config={
-	domain:'http://mt_app.cc/'
+	domain:'http://mtapp.cc/'
 }

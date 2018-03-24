@@ -13,7 +13,11 @@ return array (
     'frontend' => 'zh-cn',
   ),
   'fixedpage' => 'dashboard',
-  'categorytype' => [],
+  'categorytype' => [
+      'metal'=>'贵金属',
+      'exchange'=>'外汇',
+      'shares'=>'股票'
+  ],
   'configgroup' => 
   array (
     'basic' => 'Basic',
