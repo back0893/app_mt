@@ -96,6 +96,7 @@ class Backend extends Controller
 
     public function _initialize()
     {
+        $this->noNeedRight=array_merge($this->noNeedRight,['selectpage']);
         $modulename = $this->request->module();
         $controllername = strtolower($this->request->controller());
         $actionname = strtolower($this->request->action());

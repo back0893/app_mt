@@ -17,7 +17,6 @@ class Category extends Backend
 
     protected $model = null;
     protected $categorylist = [];
-    protected $noNeedRight = ['selectpage'];
 
     public function _initialize()
     {
@@ -90,5 +89,4 @@ class Category extends Backend
     {
         return parent::selectpage();
     }
-
 }

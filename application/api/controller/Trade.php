@@ -26,10 +26,11 @@ class Trade extends Api
     public function buy(){
         $number=input('number',0,'intval');
         $price=input('price',0,'intval');
-        $code=input('code',0,'intval');
+        $code=input('code',0,'trim');
         if($number<=0 || $price<=0){
             return Response::error('金额不足');
         }
+        $price=intval($price*100);
         $user=$this->auth->getUser();
         $tradeModel=new \app\api\model\Trade();
         $data=[
@@ -78,7 +79,7 @@ class Trade extends Api
 
     //卖出
     public function sail(){
-        $code=input('code',0,'intval');
+        $code=input('code',0,'trim');
         $user=$this->auth->getUser();
         $owner=unserialize($user->owner);
         $owner=empty($owner)?[]:$owner;

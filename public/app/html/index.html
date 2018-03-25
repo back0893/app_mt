@@ -33,30 +33,17 @@
     <ul class="layui-nav fly-nav-user">
       
       <!-- 未登入的状态 -->
-      <li class="layui-nav-item">
-        <a class="iconfont icon-touxiang layui-hide-xs" href="user/login.html"></a>
+      <li class="layui-nav-item unlogin">
+        <a href="user/login.html ">登入</a>
       </li>
-      <li class="layui-nav-item">
-        <a href="user/login.html">登入</a>
+      <li class="layui-nav-item unlogin">
+        <a href="user/reg.html login">注册</a>
       </li>
-      <li class="layui-nav-item">
-        <a href="user/reg.html">注册</a>
-      </li>
-      <li class="layui-nav-item layui-hide-xs">
-        <a href="/app/qq/" onclick="layer.msg('正在通过QQ登入', {icon:16, shade: 0.1, time:0})" title="QQ登入" class="iconfont icon-qq"></a>
-      </li>
-      <li class="layui-nav-item layui-hide-xs">
-        <a href="/app/weibo/" onclick="layer.msg('正在通过微博登入', {icon:16, shade: 0.1, time:0})" title="微博登入" class="iconfont icon-weibo"></a>
-      </li>
-      
       <!-- 登入后的状态 -->
-      <!--
       <li class="layui-nav-item">
         <a class="fly-nav-avatar" href="javascript:;">
-          <cite class="layui-hide-xs">贤心</cite>
-          <i class="iconfont icon-renzheng layui-hide-xs" title="认证信息：layui 作者"></i>
-          <i class="layui-badge fly-badge-vip layui-hide-xs">VIP3</i>
-          <img src="https://tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg">
+          <cite class="layui-hide-xs" id='username'></cite>
+          <img id='icon' src="#">
         </a>
         <dl class="layui-nav-child">
           <dd><a href="user/set.html"><i class="layui-icon">&#xe620;</i>基本设置</a></dd>
@@ -66,7 +53,7 @@
           <dd><a href="/user/logout/" style="text-align: center;">退出</a></dd>
         </dl>
       </li>
-      -->
+      
     </ul>
   </div>
 </div>
@@ -74,10 +61,13 @@
 <div class="fly-panel fly-column">
   <div class="layui-container">
     <ul class="layui-clear">
-      <li data-type="meta"><a href="./index.html">贵金属</a></li> 
-      <li class="layui-this"><a href="./index.html" data-type="shares">股票</a></li> 
-      <li><a href="./index.html" data-type="exchange">外汇</a></li> 
-      <li class="layui-hide-xs layui-hide-sm layui-show-md-inline-block"><span class="fly-mid"></span></li> 
+      <li data-type="metal" class='type' data-type='metal'><a href="#" >贵金属</a></li> 
+      <li class="layui-hide-xs layui-hide-sm layui-show-md-inline-block"><span class="fly-mid"></span></li>
+      <li class="layui-this type" data-type="shares"><a href="#">股票</a></li> 
+      <li class="layui-hide-xs layui-hide-sm layui-show-md-inline-block"><span class="fly-mid"></span></li>
+      <li data-type="exchange" class='type' ><a href="#">外汇</a></li> 
+      <li class="layui-hide-xs layui-hide-sm layui-show-md-inline-block"><span class="fly-mid"></span></li>
+      <li id='my_all' ><a href="#">我的</a></li> 
     </ul> 
   </div>
 </div>
@@ -86,43 +76,9 @@
   	<div class="layui-row layui-col-space15">
 	    <div class="layui-col-md12">
 	      <div class="fly-panel" style="margin-bottom: 0;">
-	      	 <div class="fly-panel-title fly-filter">
-		          <a href="" class="layui-this">综合</a>
-		          <span class="fly-mid"></span>
-		          <a href="">编号</a>
-		          <span class="fly-mid"></span>
-		          <a href="">当前价格</a>
-		          <span class="fly-filter-right layui-hide-xs">
-		            <a href="" class="layui-this">按涨</a>
-		            <span class="fly-mid"></span>
-		            <a href="">按跌</a>
-		          </span>
-        	</div>
-	        <ul class="fly-list">          
-	          <li>
-	            <a href="user/home.html" class="fly-avatar">
-	              <img src="https://tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg" alt="贤心">
-	            </a>
-	            <h2>
-	              <a class="layui-badge show">股票</a>
-	              <a href='#'>五粮液</a>
-	            </h2>
-	            <div class="fly-list-info">
-	              <span>昨日价格:110元</span>
-	              <span>开盘价格:100 元</span>
-	              <span>当前价格:123 元</span>
-	              <span>涨跌:12元</span>
-	            </div>
-	            <div class="fly-list-badge">
-	            </div>
-	          </li>
+	        <ul class="fly-list" id='show_shares'>          
 	        </ul>
-	        <div style="text-align: center">
-	          <div class="laypage-main">
-	            <a href="jie/index.html" class="laypage-next">更多求解</a>
-	          </div>
-	        </div>
-	
+	        <div style="text-align: center" id='my_page'></div>
 	      </div>
 	    </div>
 	</div>
@@ -137,24 +93,91 @@
   </p>
 </div>
 <script src="../res/layui/layui.js"></script>
+<script src="../res/my/config.js"></script>	
 <script>
-layui.cache.page = '';
-layui.cache.user = {
-  username: '游客'
-  ,uid: -1
-  ,avatar: '../res/images/avatar/00.jpg'
-  ,experience: 83
-  ,sex: '男'
-};
-layui.config({
-  version: "3.0.0"
-  ,base: '../res/mods/' //这里实际使用时，建议改成绝对路径
-}).extend({
-  fly: 'index'
-}).use('fly');
+layui.define(['jquery','laypage'],function(exproess){
+	var laypage=layui.laypage;
+	var $=layui.jquery;
+	var token=localStorage.getItem('token');
+	function pageInit(){
+		var select_my=$('#my_all').hasClass('layui-this')?1:0;
+		$.post(config.domain+'api/index/total.html',{type:$('.type.layui-this').data('type'),my:select_my,token:localStorage.getItem('token')},function(response){
+			laypage.render({
+				elem:'my_page',
+				count:response.data.count,
+				jump:function(obj,first){
+					init(obj.curr);
+				}
+			});	
+		});
+	}
+	function init(page){
+			var type=$('.type.layui-this').data('type');
+			var select_my=$('#my_all').hasClass('layui-this')?1:0;
+			$.post(config.domain+'api/index/index.html',{type:type,page:page,my:select_my,token:localStorage.getItem('token')},function(response){
+				var html='';
+				$.each(response.data,function(i,k){
+		            html='<li><a class="fly-avatar"><img src="#"></a><h2>'+
+		             ' <a href="#" class="detail" data-code="'+i+'">'+k.name+'</a></h2>'+
+		           ' <div class="fly-list-info">'+
+		              '<span>开盘价格:'+k.open_price+'元</span>'+
+		              '<span>当前价格:'+k.current_price+'元</span>'+
+		              '<span>涨跌:'+k.up+'元</span>'+
+		           ' </div>'+
+		            '<div class="fly-list-badge">'+
+		           ' </div>'+
+		          '</li>';
+				});
+				$('#show_shares').empty().append(html);
+			});
+			$('#show_shares').on('click','.detail',function(){
+				localStorage.setItem('code',$(this).data('code'));
+				location.href='./jie/detail.html';
+				return false;
+			});
+		}
+	$(function(){
+		if(localStorage.getItem('userInfo')){
+		  	$('.unlogin').hide();
+		  	$('.login').show();
+		  	var userInfo=JSON.parse(localStorage.getItem('userInfo'));
+		  	var icon=userInfo.avatar?userInfo.avatar:config.default_icon;
+		  	$('#username').text(userInfo.username);
+		  	$('#icon').attr('src',icon);
+		  }else{
+		  	$('.login').hide();
+		  	$('.unlogin').show();
+		  };
+		$('ul.layui-clear').on('click','li.type',function(){
+			$(this).siblings('.type').removeClass('layui-this')
+			.end().addClass('layui-this');
+			pageInit();
+			return false;
+		});
+	
+		
+		$('#my_all').click(function(){
+			$(this).toggleClass('layui-this');
+			pageInit();
+		});
+		
+		pageInit();
+	});
+	  //手机设备的简单适配
+  var treeMobile = $('.site-tree-mobile')
+  ,shadeMobile = $('.site-mobile-shade')
+
+  treeMobile.on('click', function(){
+    $('body').addClass('site-mobile');
+  });  
+})
+
+layui.use('element',function(){
+	var element=layui.layer;
+})
+
 </script>
 
-<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_30088308'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "w.cnzz.com/c.php%3Fid%3D30088308' type='text/javascript'%3E%3C/script%3E"));</script>
 
 </body>
 </html>

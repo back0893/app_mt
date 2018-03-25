@@ -9,26 +9,26 @@
 namespace app\api\controller;
 
 
-use app\api\model\Shares;
+use app\common\model\Shares;
 use app\common\controller\Api;
 
 class ShowK extends Api
 {
-    protected $noNeedRight='*';
     protected $noNeedLogin='*';
     public function index(){
-        //开始时将分类查出来
-        $type=input('type');
-        $model=Shares::get(['id'=>1]);
+        //开始时将分类查出来,还需要把名称
+        $code=input('code','','trim');
+        $date=input('date',date('Y-m-d'),'trim');
+        $model=Shares::hasWhere('category',['diyname'=>$code])
+            ->where(['date'=>$date])
+            ->find();
         $data=$model->detail->data;
-        $c=date('Y');
         $key=[];
         $value=[];
-        foreach ($data->data as $x){
-            list($time,$price,$number)=explode(chr(32),$x);
+        foreach ($data as $time=>$price){
             $key[]=substr($time,0,2).':'.substr($time,2);
             $value[]=$price;
         }
-        return $this->success('',['key'=>$key,'value'=>$value]);
+        return $this->success('',['key'=>$key,'value'=>$value,'name'=>$model->category->name,'is_all'=>0]);
     }
 }

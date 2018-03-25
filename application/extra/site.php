@@ -16,9 +16,10 @@ return array (
   'categorytype' => [
       'metal'=>'贵金属',
       'exchange'=>'外汇',
-      'shares'=>'股票'
+      'shares'=>'股票',
+
   ],
-  'configgroup' => 
+  'configgroup' =>
   array (
     'basic' => 'Basic',
     'email' => 'Email',

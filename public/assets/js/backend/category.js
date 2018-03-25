@@ -11,7 +11,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                     del_url: 'category/del',
                     multi_url: 'category/multi',
                     dragsort_url: '',
-                    table: 'category',
+                    table: 'category'
                 }
             });
 
@@ -30,7 +30,9 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                         {field: 'id', title: __('Id')},
                         {field: 'type', title: __('Type')},
                         {field: 'name', title: __('Name'), align: 'left'},
-                        {field: 'weigh', title: __('Weigh')},
+                        {field: 'flag', title: '升降'},
+                        {field: 'maxprice', title: '最高价格'},
+                        {field: 'minprice', title: '最低价格'},
                         {field: 'status', title: __('Status'), operate: false, formatter: Table.api.formatter.status},
                         {field: 'operate', title: __('Operate'), table: table, events: Table.api.events.operate, formatter: Table.api.formatter.operate}
                     ]

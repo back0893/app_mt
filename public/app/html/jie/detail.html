@@ -8,6 +8,7 @@
   <meta name="description" content="Fly社区是模块化前端UI框架Layui的官网社区，致力于为web开发提供强劲动力">
   <link rel="stylesheet" href="../../res/layui/css/layui.css">
   <link rel="stylesheet" href="../../res/css/global.css">
+  <link rel="stylesheet" href="../../res/layui/css/layui.mobile.css">
 </head>
 <body>
 
@@ -102,10 +103,25 @@
   <div class="layui-row layui-col-space15">
     <div class="layui-col-md12 content detail">
       <div class="fly-panel detail-box" >
-        <h1 style="text-align: center;">五粮液</h1>
-        <div class="detail-body photos" id='main2'>
-        	 <!-- <div id="main2" style="width: 100%; height: 100%;"></div>-->
+        <h1 style="text-align: center;" id='name'></h1>
+
+        <div class="fly-detail-info">
+          <span class="layui-badge layui-bg-red fly-detail-column">前一天</span>
+          <button class="layui-btn layui-btn-radius layui-btn-normal" id='buy'>
+      	  		买入
+      	  	</button>
+          <span class="fly-list-nums"> 
+          		<button class="layui-btn layui-btn-radius layui-btn-normal" id='sail'>
+    					买入
+    				</button>
+          		<span class="layui-badge layui-bg-red">后一天</span>
+          		
+          </span>
         </div>
+        <div class="detail-about">
+        	<p>当前价格:120</p>
+        </div>
+        <div class="detail-body photos" id='main2'></div>
       </div>
     </div>
    </div>
@@ -124,22 +140,36 @@
 <script src='../../res/my/config.js'></script>
 <script src="../../res/my/echarts.js"></script>
 <script>
-layui.cache.page = 'jie';
-layui.cache.user = {
-  username: '游客'
-  ,uid: -1
-  ,avatar: '../../res/images/avatar/00.jpg'
-  ,experience: 83
-  ,sex: '男'
-};
-layui.config({
-  version: "3.0.0"
-  ,base: '../../res/mods/'
-}).extend({
-  fly: 'index'
-}).use(['fly', 'face'], function(){
-  var $ = layui.$
-  ,fly = layui.fly;
+	var layer;
+	var form;
+	layui.use('form',function(){
+		window.form=layui.form;
+		var $=layui.$;
+		form.on('submit(buy)',function(data){
+			var l=$.extend(data.field,{token:localStorage.getItem('token'),code:'000001'});
+			$.post(config.domain+'api/trade/buy',l,function(response){
+				layer.msg(response.msg, {
+					  time: 2000, //2s后自动关闭
+					});
+				});
+			return false;
+		});
+		form.on('submit(sail)',function(data){
+			var l=$.extend(data.field,{token:localStorage.getItem('token'),code:'000001'});
+			$.post(config.domain+'api/trade/sail',l,function(response){
+				layer.msg(response.msg, {
+					  time: 2000, //2s后自动关闭
+					});
+				});
+			return false;
+		});
+	})
+layui.use('mobile',function(){
+	window.layer=layui.mobile.layer;
+})
+layui.use('jquery', function(){
+  var $ = layui.$;
+	layui.jquery=$;
   var myChart = echarts.init(document.getElementById('main2'));
 var option = {
     backgroundColor: '#21202D',
@@ -188,12 +218,31 @@ var option = {
 myChart.setOption(option, true);
 myChart.showLoading();
 var a1=[],b1=[],a2=[],b2=[];
-$.post(config.domain+'api/show_k/index.html',function(response){
+$.post(config.domain+'api/show_k/index.html',{code:localStorage.getItem('code'),'token':localStorage.getItem('token')},function(response){
+		$('#name').text(response.data.name);
 		myChart.hideLoading();
-		a1=response.data.key.slice(parseInt(response.data.key.length/2));
-		a2=response.data.key.slice(0,parseInt(response.data.key.length/2));
-		b1=response.data.value.slice(parseInt(response.data.value.length/2));
-		b2=response.data.value.slice(0,parseInt(response.data.value.length/2));
+		var c=new Date();
+		var h=c.getHours();
+		var m=c.getMinutes();
+		if(h<10){
+			h='0'+h;
+		}
+		if(m<10){
+			m='0'+m;
+		}
+		var index=response.data.key.indexOf(h+':'+m)
+		if(response.data.is_all){
+			a1=[];
+			b1=[];
+			a2=response.data.key;
+			b2=response.data.value;
+		}else{
+			a1=response.data.key.slice(index);
+			a2=response.data.key.slice(0,index);
+			b1=response.data.value.slice(index);
+			b2=response.data.value.slice(0,index);
+		}
+
 		var tmp={
 			xAxis:{
 				data:a2
@@ -210,6 +259,7 @@ $.post(config.domain+'api/show_k/index.html',function(response){
 var i=setInterval(function(){
 	if(a1.length==0){
 		clearInterval(i);
+		return '';
 	}
 	a2.push(a1.splice(0,1)[0]);
 	b2.push(b1.splice(0,1)[0]);
@@ -225,6 +275,64 @@ var i=setInterval(function(){
 		]
 	})
 },200);
+$('#buy').click(function(){
+	 layer.open({
+    title: [
+      '买入',
+      'background-color: #FF4351; color:#fff;'
+    ]
+    ,content:'<form class="layui-form" action="">'+
+    ' <div class="layui-form-item">'+
+    '<label class="layui-form-label">买入数量</label>'+
+    '<div class="layui-input-block">'+
+     ' <input type="text" name="number" required  lay-verify="required" placeholder="请输入数量" autocomplete="off" value="" class="layui-input">'+
+    '</div>'+
+  '</div>'+
+  ' <div class="layui-form-item">'+
+    '<label class="layui-form-label">买入价格</label>'+
+    '<div class="layui-input-block">'+
+     ' <input type="number" name="price" required  lay-verify="required" placeholder="买入价格" readonly="readonly" autocomplete="off" value="12" class="layui-input">'+
+    '</div>'+
+  '</div>'+
+'  <div class="layui-form-item">'+
+   ' <div class="layui-input-block">'+
+     ' <button class="layui-btn" lay-submit lay-filter="buy">购买</button>'+
+      '<button type="reset" class="layui-btn layui-btn-primary" onclick="layer.closeAll()">关闭</button>'+
+    '</div>'+
+  '</div>'+
+    '</form>'
+  });
+  $('.layui-layer .layui-layer-btn').remove();
+});
+$('#sail').click(function(){
+	 layer.open({
+    title: [
+      '卖出',
+      'background-color: #FF4351; color:#fff;'
+    ]
+    ,content:'<form class="layui-form" action="">'+
+    ' <div class="layui-form-item">'+
+    '<label class="layui-form-label">买出数量</label>'+
+    '<div class="layui-input-block">'+
+     ' <input type="text" name="number" required  lay-verify="required" placeholder="拥有'+1+'" autocomplete="off" value="" class="layui-input">'+
+    '</div>'+
+  '</div>'+
+  ' <div class="layui-form-item">'+
+    '<label class="layui-form-label">买出价格</label>'+
+    '<div class="layui-input-block">'+
+     ' <input type="number" name="price" required  lay-verify="required" placeholder="卖出价格" readonly="readonly" autocomplete="off" value="12" class="layui-input">'+
+    '</div>'+
+  '</div>'+
+'  <div class="layui-form-item">'+
+   ' <div class="layui-input-block">'+
+     ' <button class="layui-btn" lay-submit lay-filter="sail">卖出</button>'+
+      '<button type="reset" class="layui-btn layui-btn-primary" onclick="layer.closeAll()">关闭</button>'+
+    '</div>'+
+  '</div>'+
+    '</form>'
+  });
+  $('.layui-layer .layui-layer-btn').remove();
+});
 });
 </script>
 </body>
