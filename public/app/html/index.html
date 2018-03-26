@@ -37,9 +37,8 @@
         <dl class="layui-nav-child">
           <dd><a href="user/set.html"><i class="layui-icon">&#xe620;</i>基本设置</a></dd>
           <dd><a href="user/message.html"><i class="iconfont icon-tongzhi" style="top: 4px;"></i>我的消息</a></dd>
-          <dd><a href="user/home.html"><i class="layui-icon" style="margin-left: 2px; font-size: 22px;">&#xe68e;</i>我的主页</a></dd>
           <hr style="margin: 5px 0;">
-          <dd><a href="/user/logout/" style="text-align: center;">退出</a></dd>
+          <dd><a id='logout' style="text-align: center;">退出</a></dd>
         </dl>
       </li>
       
@@ -120,6 +119,16 @@ layui.define(['jquery','laypage'],function(exproess){
 			});
 		}
 	$(function(){
+		$('#logout').click(function(){
+			$.post(config.domain+'api/user/logout.html',{token:localStorage.getItem('token')},function(response){
+				if(response.code==1){
+					localStorage.clear();
+					location.href='/index.html';
+				}
+				layer.msg('退出失败',{time:2*1000})
+			})
+		})
+		
 		if(localStorage.getItem('userInfo')){
 		  	$('.unlogin').hide();
 		  	$('.login').show();
@@ -131,6 +140,7 @@ layui.define(['jquery','laypage'],function(exproess){
 		  	$('.login').hide();
 		  	$('.unlogin').show();
 		  };
+		  
 		$('ul.layui-clear').on('click','li.type',function(){
 			$(this).siblings('.type').removeClass('layui-this')
 			.end().addClass('layui-this');
@@ -156,7 +166,7 @@ layui.define(['jquery','laypage'],function(exproess){
 })
 
 layui.use('element',function(){
-	var element=layui.layer;
+	var element=layui.element;
 })
 
 </script>
