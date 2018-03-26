@@ -4,9 +4,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>基于 layui 的极简社区页面模版</title>
+  <title>首页</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="keywords" content="fly,layui,前端社区">
+  <meta name="keywords" content="fly,前端社区">
   <meta name="description" content="Fly社区是模块化前端UI框架Layui的官网社区，致力于为web开发提供强劲动力">
   <link rel="stylesheet" href="../res/layui/css/layui.css">
   <link rel="stylesheet" href="../res/css/global.css">
@@ -18,17 +18,6 @@
     <a class="fly-logo" href="/">
       <img src="../res/images/logo.png" alt="layui">
     </a>
-    <ul class="layui-nav fly-nav layui-hide-xs">
-      <li class="layui-nav-item layui-this">
-        <a href="/"><i class="iconfont icon-jiaoliu"></i>交流</a>
-      </li>
-      <li class="layui-nav-item">
-        <a href="case/case.html"><i class="iconfont icon-iconmingxinganli"></i>案例</a>
-      </li>
-      <li class="layui-nav-item">
-        <a href="http://www.layui.com/" target="_blank"><i class="iconfont icon-ui"></i>框架</a>
-      </li>
-    </ul>
     
     <ul class="layui-nav fly-nav-user">
       
@@ -85,12 +74,6 @@
 </div>
 </div>
 <div class="fly-footer">
-  <p><a href="http://fly.layui.com/" target="_blank">Fly社区</a> 2017 &copy; <a href="http://www.layui.com/" target="_blank">layui.com 出品</a></p>
-  <p>
-    <a href="http://fly.layui.com/jie/3147/" target="_blank">付费计划</a>
-    <a href="http://www.layui.com/template/fly/" target="_blank">获取Fly社区模版</a>
-    <a href="http://fly.layui.com/jie/2461/" target="_blank">微信公众号</a>
-  </p>
 </div>
 <script src="../res/layui/layui.js"></script>
 <script src="../res/my/config.js"></script>	
@@ -117,7 +100,7 @@ layui.define(['jquery','laypage'],function(exproess){
 			$.post(config.domain+'api/index/index.html',{type:type,page:page,my:select_my,token:localStorage.getItem('token')},function(response){
 				var html='';
 				$.each(response.data,function(i,k){
-		            html='<li><a class="fly-avatar"><img src="#"></a><h2>'+
+		            html='<li><a class="fly-avatar"><img src="'+config.domain+k.image+'"></a><h2>'+
 		             ' <a href="#" class="detail" data-code="'+i+'">'+k.name+'</a></h2>'+
 		           ' <div class="fly-list-info">'+
 		              '<span>开盘价格:'+k.open_price+'元</span>'+

@@ -21,25 +21,27 @@ class Index extends Api
     public function index()
     {
        $type=input('type','shares','trim');
-       $page=input('page',0,'intval');
-        $my=input('my',false);
+       $page=input('page',1,'intval');
+        $my=input('my',0);
        $current=date('Hi');
-       if(strcmp($current,'0930')==-1){
+       if(strcmp($current,'0930')<0){
            $date=date('Y-m-d',strtotime('-1 day'));
        }else{
            $date=date('Y-m-d');
        }
+
        $hasWhere=['type'=>$type];
-        if($my){
+        if(!empty($my)){
             $owner=unserialize($this->auth->owner);
             $ids=array_keys($owner);
             $hasWhere['diyname']=['in',$ids];
         }
        $shares=Shares::hasWhere('category',$hasWhere)
-            ->where(['date'=>$date])
+            ->where(['date'=>['<=',$date]])
            ->page($page,10)
            ->order(['date'=>'desc'])
            ->with('detail,category')
+           ->group('cid')
            ->select();
        $flip=config('site.categorytype');
        $tmp=[];
@@ -48,8 +50,9 @@ class Index extends Api
                'name'=>$share->category->name,
                'type'=>$flip[$type],
                'open_price'=>$share->open_price,
-               'current_price'=>$share->current_price,
-               'up'=>$share->current_price-$share->open_price
+               'current_price'=>number_format($share->current_price/100,2),
+               'up'=>number_format((($share->current_price-$share->open_price*100)/100),2),
+               'image'=>$share->category->image
            ];
        }
         return $this->success('',$tmp);
