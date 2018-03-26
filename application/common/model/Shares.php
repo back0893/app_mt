@@ -49,49 +49,38 @@ class Shares extends Model
         $intval=intval(($s-$t)/60);
         $start=new \DateTime();
         $start->setTimestamp($t);
-        $maxPrice=0;
-        $minPrice=10000000;
         $category=Category::get(['id'=>$this->getData('cid')]);
         $flag=empty($flag)?$category->getData('flag'):$flag;
         $open_price=$this->getData('open_price');
         $max=empty($this->getData('maxprice'))?$category->getData('maxprice'):$this->getData('maxprice');
-        $min=empty($this->getData('maxprice'))?$category->getData('minprice'):$this->getData('maxprice');
+        $min=empty($this->getData('minprice'))?$category->getData('minprice'):$this->getData('minprice');
         $data=['0930'=>$open_price];
         $m1=new \DateInterval('PT1M');
         $high1=50+$flag;
         $high2=-50+$flag;
         $hhh=array_merge(range($high2,0),range(0,$high1));
-        do{
-            $up=0;
-            $down=0;
-            $last_price=$open_price;
-            for($i=0;$i<$intval;$i++){
-                shuffle($hhh);
-                $start->add($m1);
-                $go=$hhh[array_rand($hhh)]>0?1:-1;
-                $go==1?$up++:$down++;
-                $k=intval((1+($go*(rand(1,3)/100)))*$last_price);
-                if($k>=$max){
-                    $k=$max;
-                }
-                elseif($k<=$min){
-                    $k=$min;
-                }
-                $data[$start->format('Hi')]=$k;
-                if($maxPrice<$k){
-                    $maxPrice=$k;
-                }
-                elseif($minPrice>$k){
-                    $minPrice=$k;
-                }
-                $last_price=$k;
-            }
-            if($flag>0){
-                $more=$up-$down;
+        $last_price=$open_price;
+        for($i=0;$i<$intval;$i++){
+            shuffle($hhh);
+            $start->add($m1);
+            $go=$hhh[array_rand($hhh)]>0?1:-1;
+            if($go==-1){
+                $t=rand(1,4);
             }else{
-                $more=$down-$up;
+                $t=rand(1,3);
             }
-        }while($more>abs($flag));
+            $k=intval((1+($go*$t/100))*$last_price);
+            if($k>=$max){
+                $k=$max;
+                $flag=-5;
+            }
+            elseif($k<=$min){
+                $k=$min;
+                $flag=1;
+            }
+            $data[$start->format('Hi')]=$k;
+            $last_price=$k;
+        }
         $save=['id'=>$this->getData('id'),'date'=>$this->getData('date'),'data'=>$data];
         $detail=SharesDetail::find(['id'=>$save['id']]);
         if(empty($detail)){
@@ -101,7 +90,7 @@ class Shares extends Model
             $detail->allowField(true)->save($save);
         }
         $this->isUpdate(true)
-            ->save(['endprice'=>$last_price/100,'maxprice'=>$maxPrice/100,'minprice'=>$minPrice/100]);
+            ->save(['endprice'=>$last_price/100]);
         $nextDay=new \Datetime($this->getData('date'));
         $ttt=new \DateInterval('P1D');
         $nextDay->add($ttt);
