@@ -3,6 +3,8 @@
 namespace app\admin\controller;
 
 use app\common\controller\Backend;
+use app\common\model\SharesDetail;
+use think\Db;
 
 /**
  * 
@@ -64,8 +66,53 @@ class Shares extends Backend
         return $this->view->fetch();
     }
     public function mk(){
-        $model=\app\common\model\Shares::get(['id'=>21]);
-        $model->makeDetail();
-        echo 'ok';
+        $id=input('id',0,'intval');
+        $flag=input('flag',0,'intval');
+        $model=\app\common\model\Shares::get(['id'=>$id]);
+        $r=$model->makeDetail($flag);
+        if($r){
+            return $this->success('生成成功');
+        }
+        return $this->error('生成失败');
+    }
+    //这里后台显示k线图,用来后台自动重新生成k线图
+    public function showK(){
+        if($this->request->isPost()){
+            $id=input('id',0,'intval');
+            $model=\app\common\model\Shares::get(['id'=>$id]);
+            $data=$model->detail->data;
+            $key=[];
+            $value=[];
+            foreach ($data as $time=>$price){
+                $key[]=substr($time,0,2).':'.substr($time,2);
+                $value[]=$price;
+            }
+            return $this->success('','',['key'=>$key,'value'=>$value,'name'=>$model->category->name]);
+        }
+        $id=input('ids',0,'intval');
+        $this->assign('id',$id);
+        return $this->fetch('showK');
+    }
+    public function mk10day(){
+        $id=input('ids',0,'intval');
+        //先删除从今天起(不包括今天的数据),在添加,今天的数据应该作为基础数据
+        $ids=\app\common\model\Shares::where(['cid'=>$id,'date'=>['>',date('Y-m-d')]])
+            ->value('id');
+        if(!empty($ids)){
+            SharesDetail::where(['id'=>['in',$ids]])->delete();
+            \app\common\model\Shares::where(['cid'=>$id,'date'=>['>',date('Y-m-d')]])->delete();
+        }
+        $now=new \DateTime('+1 day');
+        $now_share=\app\common\model\Shares::where(['cid'=>$id,'date'=>date('Y-m-d')])
+            ->find();
+        $now_share->makeDetail();
+        $interval=new \DateInterval('P1D');
+        $daterange=new \DatePeriod($now,$interval,10);
+        foreach ($daterange as $i=>$d){
+            $model=\app\common\model\Shares::where(['cid'=>$id,'date'=>$d->format('Y-m-d')])
+                ->find();
+            $model->makeDetail();
+        }
+        return $this->success();
     }
 }

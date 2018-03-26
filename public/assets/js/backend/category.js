@@ -28,12 +28,14 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                     [
                         {checkbox: true},
                         {field: 'id', title: __('Id')},
-                        {field: 'type', title: __('Type')},
+                        {field: 'type_text', title: '类型'},
                         {field: 'name', title: __('Name'), align: 'left'},
                         {field: 'flag', title: '升降'},
                         {field: 'maxprice', title: '最高价格'},
                         {field: 'minprice', title: '最低价格'},
-                        {field: 'status', title: __('Status'), operate: false, formatter: Table.api.formatter.status},
+                        {field: 'id', title: '生成10数据', table: table, buttons: [
+                            {name: 'detail', text: '生成10数据', title: '生成10数据', icon: 'fa fa-flash', classname: 'btn btn-xs btn-success btn-ajax', url: 'shares/mk10day'}
+                        ], operate:false, formatter: Table.api.formatter.buttons},
                         {field: 'operate', title: __('Operate'), table: table, events: Table.api.events.operate, formatter: Table.api.formatter.operate}
                     ]
                 ]

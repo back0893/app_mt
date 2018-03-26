@@ -11,13 +11,6 @@ use think\Model;
 class Category Extends Model
 {
     use Price;
-    protected $FlagLL=[
-        -2=>'下降快',
-        -1=>'下降',
-        0=>'正常',
-        1=>'上升',
-        2=>'上升快'
-    ];
     // 开启自动写入时间戳字段
     protected $autoWriteTimestamp = 'int';
     // 定义时间戳字段名
@@ -47,7 +40,6 @@ class Category Extends Model
         }
         return $typeList;
     }
-
     public function getTypeTextAttr($value, $data)
     {
         $value = $value ? $value : $data['type'];
@@ -87,8 +79,5 @@ class Category Extends Model
                     }
                 })->order('weigh', 'desc')->select())->toArray();
         return $list;
-    }
-    protected function getFlagAttr($value){
-        return $this->FlagLL[$value];
     }
 }

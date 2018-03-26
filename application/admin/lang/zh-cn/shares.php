@@ -6,6 +6,6 @@ return [
     'Date'  =>  '时间',
     'Open_price'  =>  '开盘价格',
     'Yesterday_price'  =>  '昨收价格',
-    'Maxprice'  =>  '最高',
-    'Minprice'  =>  '最低'
+    'maxprice'  =>  '最高',
+    'minprice'  =>  '最低'
 ];

@@ -26,6 +26,18 @@ trait Price
         return intval($price*100);
     }
     protected function getPrice($price){
-        return number_format($price/100,2);
+        return number_format($price/100,2,'.','');
+    }
+    protected function getOpenPriceAttr($value){
+        return $this->getPrice($value);
+    }
+    protected function setOpenPriceAttr($value){
+        return $this->getPrice($value);
+    }
+    protected function getEndpriceAttr($value){
+        return $this->getPrice($value);
+    }
+    protected function setEndpriceAttr($value){
+        return $this->setPrice($value);
     }
 }
