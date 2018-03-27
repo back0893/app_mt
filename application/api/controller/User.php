@@ -407,12 +407,21 @@ class User extends Api
         if(empty($row)){
             $row=new Bank();
         }
-        $r=$row->allowField('uid,name,code,user_code')
+        $r=$row->allowField('uid,name,code,user_code,address')
             ->validate(true)
             ->save($data);
         if($r===false){
             return $this->error('绑定失败');
         }
         return $this->success('绑定成功');
+    }
+
+    /**
+     * 用户资金
+     */
+    public function money(){
+        $userInfo=$this->auth->getUser();
+        $free=$userInfo->money;
+        return $this->success('',['free'=>$free]);
     }
 }

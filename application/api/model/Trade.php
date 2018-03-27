@@ -12,4 +12,7 @@ use think\Model;
 class Trade extends Model
 {
     protected $name='trade';
+    protected function getMoneyAttr($value){
+        return number_format($value/100,2);
+    }
 }

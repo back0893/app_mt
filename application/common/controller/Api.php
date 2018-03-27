@@ -201,7 +201,7 @@ class Api
             //未设置状态码,根据code值判断
             $code = $code >= 1000 || $code < 200 ? 200 : $code;
         }
-        $response = Response::create($result, $type, $code)->header($header);
+        $response = Response::create($result, $type, 200)->header($header);
         throw new HttpResponseException($response);
     }
 

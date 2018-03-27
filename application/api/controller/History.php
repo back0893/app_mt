@@ -12,6 +12,7 @@ namespace app\api\controller;
 use app\admin\model\Outting;
 use app\api\helper\Response;
 use app\common\controller\Api;
+use app\common\model\Category;
 use app\common\model\Trade;
 
 class History extends Api
@@ -19,38 +20,33 @@ class History extends Api
     protected $noNeedRight = ['*'];
     protected $noNeedLogin='';
     public function index(){
-        $user=$this->auth->getUser();
-        //计算当前用户持有金额,和出金
-        $owner=unserialize($user['owner']);
-        $ownerMoney=0;
-        $code=config('code');
-        $owner=empty($owner)?[]:$owner;
-        foreach ($owner as $c=>$o){
-            $ownerMoney+=$o['number']*$o['price'];
-            $o['name']=$code[$c];
-            $o['money']=number_format($o['number']*$o['price']/100,2);
-        }
-        $free=number_format($user['money']/100,2);
-        $totalMoney=number_format(($user['money']+$ownerMoney)/100,2);
-        //总出金
-        $totalOut=Outting::where(['uid'=>$user['id']])
-            ->count('money');
-        $totalOut=number_format($totalOut/100,2);
-        //交易订单
+        $page=input('page',1,'intval');
         $date=input('date','week');
         $model=new Trade();
-        $history=$model->history($date,$this->auth->id);
-        return $this->success('成功',['history'=>$history,'totalMoney'=>$totalMoney,'totalOut'=>$totalOut, 'free'=>$free]);
+        $history=$model->history($date,$this->auth->id,$page);
+        return $this->success('成功',['history'=>$history]);
     }
     public function own(){
+        $page=input('page',1,'intval');
         $user=$this->auth->getUser();
         $owner=unserialize($user['owner']);
-        $code=config('code');
+        $code=Category::column('name','diyname');
         $owner=empty($owner)?[]:$owner;
+        $owner=array_slice($owner,($page-1)*10,10);
         foreach ($owner as $k=>&$o){
+            $o['price']=sprintf('%.2f',$o['price']/100);
             $o['name']=$code[$k];
-            $o['money']=$o['number']*$o['price'];
+            $o['money']=number_format($o['number']*$o['price'],2);
         }
         return Response::success('成功',['own'=>$owner]);
+    }
+    public function pageCount(){
+        $uid=$this->auth->id;
+        $page1=Trade::where(['uid'=>$uid])
+            ->count();
+        $owner=unserialize($this->auth->owner);
+        $owner=empty($owner)?[]:$owner;
+        $page2=count($owner);
+        return $this->success('',['page1'=>$page1,'page2'=>$page1]);
     }
 }

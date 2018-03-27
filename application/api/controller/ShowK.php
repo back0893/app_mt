@@ -53,7 +53,7 @@ class ShowK extends Api
         $value=[];
         foreach ($data as $time=>$price) {
             $key[] = substr($time, 0, 2) . ':' . substr($time, 2);
-            $value[] = $price;
+            $value[] = sprintf('%.2f',$price/100);
         }
         $l=unserialize($this->auth->owner);
         $has=empty($l[$code])?0:$l[$code]['number'];

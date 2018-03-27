@@ -113,5 +113,7 @@ class User Extends Model
         }
         return $level;
     }
-
+    protected function getMoneyAttr($value){
+        return sprintf('%.2f',$value/100);
+    }
 }

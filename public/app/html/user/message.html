@@ -9,7 +9,6 @@
   <meta name="description" content="Fly社区是模块化前端UI框架Layui的官网社区，致力于为web开发提供强劲动力">
   <link rel="stylesheet" href="../../res/layui/css/layui.css">
   <link rel="stylesheet" href="../../res/css/global.css">
-  <link rel="stylesheet" href='../../res/layui/css/layui.mobile.css'> 
 </head>
 <body>
 
@@ -17,48 +16,32 @@
   <div class="layui-container">
     <a class="fly-logo" href="/">
       <img src="../../res/images/logo.png" alt="layui">
-    </a>
-    <ul class="layui-nav fly-nav layui-hide-xs">
+      <ul class="layui-nav fly-nav layui-hide-xs">
       <li class="layui-nav-item layui-this">
-        <a href="/"><i class="iconfont icon-jiaoliu"></i>交流</a>
+        <a href="/index.html"><i class="iconfont icon-jiaoliu"></i>首页</a>
       </li>
-      <li class="layui-nav-item">
-        <a href="../case/case.html"><i class="iconfont icon-iconmingxinganli"></i>案例</a>
-      </li>
-      <li class="layui-nav-item">
-        <a href="http://www.layui.com/" target="_blank"><i class="iconfont icon-ui"></i>框架</a>
-      </li>
-    </ul>
-    
-    <ul class="layui-nav fly-nav-user">
-      <!-- 登入后的状态 -->
+     </ul>
+    </a>
+     <ul class="layui-nav fly-nav-user">
+       <!-- 登入后的状态 -->
       <li class="layui-nav-item">
         <a class="fly-nav-avatar" href="javascript:;">
-          <cite class="layui-hide-xs">贤心</cite>
-          <i class="iconfont icon-renzheng layui-hide-xs" title="认证信息：layui 作者"></i>
-          <i class="layui-badge fly-badge-vip layui-hide-xs">VIP3</i>
-          <img src="https://tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg">
+          <cite class="layui-hide-xs" id='username'></cite>
+          <img id='icon' src="#">
         </a>
         <dl class="layui-nav-child">
-          <dd><a href="../user/set.html"><i class="layui-icon">&#xe620;</i>基本设置</a></dd>
-          <dd><a href="../user/message.html"><i class="iconfont icon-tongzhi" style="top: 4px;"></i>我的消息</a></dd>
-          <dd><a href="../user/home.html"><i class="layui-icon" style="margin-left: 2px; font-size: 22px;">&#xe68e;</i>我的主页</a></dd>
+        	<dd><a href="user/index.html"><i class="layui-icon">&#xe620;</i>用户中心</a></dd>
+          <dd><a href="user/set.html"><i class="layui-icon">&#xe620;</i>基本设置</a></dd>
+          <dd><a href="user/message.html"><i class="iconfont icon-tongzhi" style="top: 4px;"></i>我的消息</a></dd>
           <hr style="margin: 5px 0;">
-          <dd><a href="" style="text-align: center;">退出</a></dd>
+          <dd><a id='logout' style="text-align: center;">退出</a></dd>
         </dl>
       </li>
     </ul>
   </div>
 </div>
-
 <div class="layui-container fly-marginTop fly-user-main">
   <ul class="layui-nav layui-nav-tree layui-inline" lay-filter="user">
-    <li class="layui-nav-item">
-      <a href="home.html">
-        <i class="layui-icon">&#xe609;</i>
-        我的主页
-      </a>
-    </li>
     <li class="layui-nav-item">
       <a href="index.html">
         <i class="layui-icon">&#xe612;</i>
@@ -78,8 +61,7 @@
       </a>
     </li>
   </ul>
-
-  <div class="site-tree-mobile layui-hide">
+    <div class="site-tree-mobile layui-hide">
     <i class="layui-icon">&#xe602;</i>
   </div>
   <div class="site-mobile-shade"></div>
@@ -88,35 +70,36 @@
     <i class="layui-icon">&#xe602;</i>
   </div>
   <div class="site-mobile-shade"></div>
-  
-  
   <div class="fly-panel fly-panel-user" pad20>
 	  <div class="layui-tab layui-tab-brief" lay-filter="user" id="LAY_msg" style="margin-top: 15px;">
 	    <button class="layui-btn layui-btn-danger" id="LAY_delallmsg">清空全部消息</button>
 	    <div  id="LAY_minemsg" style="margin-top: 10px;">
-        <!--<div class="fly-none">您暂时没有最新消息</div>-->
         <ul class="mine-msg" id='mine_msg'>
+        	<div class="fly-none">您暂时没有最新消息</div>
         </ul>
       </div>
 	  </div>
 	</div>
 
 </div>
-
-
+ <div class="site-tree-mobile layui-hide">
+    <i class="layui-icon"></i>
+  </div>
+  <div class="site-mobile-shade"></div>
+  
 <div class="fly-footer">
-  <p><a href="http://fly.layui.com/" target="_blank">Fly社区</a> 2017 &copy; <a href="http://www.layui.com/" target="_blank">layui.com 出品</a></p>
-  <p>
-    <a href="http://fly.layui.com/jie/3147/" target="_blank">付费计划</a>
-    <a href="http://www.layui.com/template/fly/" target="_blank">获取Fly社区模版</a>
-    <a href="http://fly.layui.com/jie/2461/" target="_blank">微信公众号</a>
-  </p>
 </div>
 <script src="../../res/layui/layui.js"></script>
 <script src='../../res/my/config.js'></script>
 <script>
+	layui.use('element', function(){
+  var element = layui.element;
+});
 layui.use('jquery',function(){
 	var $=layui.jquery;
+	if(!localStorage.getItem('userInfo')){
+		location.href='/user/login.html';
+	}
 	$(function(){
 		$.post(config.domain+'api/user/getIO.html',{token:localStorage.getItem('token')},function(response){
 			var html='';
@@ -128,14 +111,59 @@ layui.use('jquery',function(){
            ' <p><a href="javascript:;" class="layui-btn layui-btn-small layui-btn-danger fly-delete">已读</a></p>'+
           '</li>';
 			})
-			$('#mine_msg').append(html);
+			$('#mine_msg').empty().append(html);
 		});
+		
+  	if(localStorage.getItem('userInfo')){
+		  	$('.unlogin').hide();
+		  	$('.login').show();
+		  	var userInfo=JSON.parse(localStorage.getItem('userInfo'));
+		  	var icon=userInfo.avatar?userInfo.avatar:config.default_icon;
+		  	$('#username').text(userInfo.username);
+		  	$('#icon').attr('src',icon);
+		  }else{
+		  	$('.login').hide();
+		  	$('.unlogin').show();
+		  };
+		  
+		$('#LAY_msg').on('click','#LAY_delallmsg,.fly-delete',function(){
+			var _self=$(this).closest('li');
+			var data={token:localStorage.getItem('token')};
+			if(_self.attr('data-id')){
+				data['status']=_self.data('id')
+			}else{
+				data['status']='all';
+			}
+
+			$.post(config.domain+'api/demo/message.html',data,function(response){
+				if(response.msg=='all'){
+					$('#LAY_minemsg').empty().append('<div class="fly-none">您暂时没有最新消息</div>');
+				}else{
+					_self.remove();
+				}
+			});
+		});
+		
+		  //手机设备的简单适配
+  var treeMobile = $('.site-tree-mobile')
+  ,shadeMobile = $('.site-mobile-shade')
+
+  treeMobile.on('click', function(){
+    $('body').addClass('site-mobile');
+  });
+
+  shadeMobile.on('click', function(){
+    $('body').removeClass('site-mobile');
+  });
 	})
 })
 layui.use('mobile',function(){
 	var mobile=layui.mobile;
 	window.layer=mobile.layer;
 })
+layui.use('element', function(){
+  var element = layui.element;
+});
 </script>
 
 </body>

@@ -13,13 +13,14 @@ namespace app\api\controller;
 
 use app\api\helper\Response;
 use app\common\controller\Api;
+use app\common\model\Category;
 use Cron\CronExpression;
 use think\Db;
 use think\Exception;
 
 class Trade extends Api
 {
-    protected $noNeedLogin='';
+    protected $noNeedLogin=[];
     protected $noNeedRight='*';
 
     //买入
@@ -27,6 +28,10 @@ class Trade extends Api
         $number=input('number',0,'intval');
         $price=input('price',0,'intval');
         $code=input('code',0,'trim');
+        $category=Category::column('diyname');
+        if(!in_array($code,$category)){
+            return Response::error('股买错误');
+        }
         if($number<=0 || $price<=0){
             return Response::error('金额不足');
         }
@@ -57,7 +62,7 @@ class Trade extends Api
             $product['price']=(int)$total/$product['number'];
             $owner[$data['code']]=$product;
         }else{
-            $owner[$data['code']]=['number'=>$number,'price'=>$number];
+            $owner[$data['code']]=['number'=>$number,'price'=>$price];
         }
         $user->owner=serialize($owner);
         Db::startTrans();
@@ -76,7 +81,6 @@ class Trade extends Api
         Db::commit();
         return Response::success('购买成功');
     }
-
     //卖出
     public function sail(){
         $code=input('code',0,'trim');
@@ -93,7 +97,7 @@ class Trade extends Api
             if($number>$product['number']){
                 return Response::error('数量不足');
             }
-            $total=$number*$price;
+            $total=intval($number*$price*100);
             $user->money+=$total;
             $product['number']-=$number;
             if($product['number']==0){
