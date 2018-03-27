@@ -2,7 +2,7 @@
 
 return [
     'Uid'  =>  '充值用户id',
-    'Money'  =>  '转出金额(分)',
+    'Money'  =>  '转出金额',
     'Orderid'  =>  '转出单号',
     'Tradeid'  =>  '订单号',
     'Name'  =>  '姓名',

@@ -20,17 +20,18 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
             table.bootstrapTable({
                 url: $.fn.bootstrapTable.defaults.extend.index_url,
                 pk: 'id',
-                sortName: 'id',
+                sortName: 'date',
+                search:false,
                 columns: [
                     [
                         {checkbox: true},
-                        {field: 'code', title: __('Code')},
-                        {field: 'name', title: __('Name')},
-                        {field: 'date', title: __('Date')},
-                        {field: 'open_price', title: __('Open_price'), operate:'BETWEEN'},
-                        {field: 'endprice', title: '收盘价格', operate:'BETWEEN'},
-                        {field: 'maxprice', title: __('Maxprice'), operate:'BETWEEN'},
-                        {field: 'minprice', title: __('Minprice'), operate:'BETWEEN'},
+                        {field: 'category.diyname', title: __('Code')},
+                        {field: 'category.name', title: __('Name')},
+                        {field: 'date', title: __('Date'), operate: 'RANGE', addclass:'datetimerange'},
+                        {field: 'open_price', title: __('Open_price'), operate:false},
+                        {field: 'endprice', title: '收盘价格', operate:false},
+                        {field: 'maxprice', title: __('Maxprice'), operate:false},
+                        {field: 'minprice', title: __('Minprice'), operate:false},
                         {field: 'id', title: '走势图', table: table, buttons: [
                             {name: 'detail', text: '走势图', title: '弹窗标题', icon: 'fa fa-list', classname: 'btn btn-xs btn-primary btn-dialog', url: 'shares/showK', callback:function(data){}}
                         ], operate:false, formatter: Table.api.formatter.buttons},

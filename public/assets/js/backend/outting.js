@@ -7,7 +7,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                 extend: {
                     index_url: 'outting/index',
                     multi_url: 'outting/multi',
-                    table: 'outting',
+                    table: 'outting'
                 }
             });
 
@@ -18,6 +18,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                 url: $.fn.bootstrapTable.defaults.extend.index_url,
                 pk: 'id',
                 sortName: 'id',
+                commonSearch:false,
                 columns: [
                     [
                         {checkbox: true},
@@ -31,7 +32,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                         {field: 'bankName', title: __('Bankname')},
                         {field: 'date', title: __('Date')},
                         {field: 'payed', title: __('Payed')},
-                        {field: 'charge', title: __('Charge')},
+                        {field: 'charge', title: __('Charge')}
                     ]
                 ]
             });

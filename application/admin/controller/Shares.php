@@ -42,19 +42,31 @@ class Shares extends Backend
             {
                 return $this->selectpage();
             }
-            list($where, $sort, $order, $offset, $limit) = $this->buildparams();
+            $filter=json_decode(input('filter',[]),true);
+            $offset=input('offset',0,'intval');
+            $limit=input('limit',0,'intval');
+            $where=[];
+            foreach ($filter as $k=>$v){
+                if($k=='date'){
+                    preg_match_all('/(\d{4})-(\d{2})-\d{2}/',$v,$m);
+                    list($startDate,$endDate)=$m[0];
+                    $where['date']=[['>=',$startDate],['<=',$endDate],'and'];
+                }else{
+                    $where[$k]=$v;
+                }
+            }
             $total = $this->model
+                ->with("category")
                 ->where($where)
+                ->order('date','desc')
                 ->count();
-
             $list = $this->model
+                ->with("category")
                 ->where($where)
-                ->order(['date'=>'desc','id'=>'desc'])
-                ->limit($offset, $limit)
+                ->limit($offset,$limit)
                 ->select();
             if(!empty($list)){
                 $list=collection($list)
-                    ->append(['name','code'],true)
                     ->toArray();
             }else{
                 $list=[];

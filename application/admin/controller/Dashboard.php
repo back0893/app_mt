@@ -28,21 +28,13 @@ class Dashboard extends Backend
             $paylist[$day] = mt_rand(1, mt_rand(1, $createlist[$day]));
         }
         $hooks = config('addons.hooks');
-        $uploadmode = isset($hooks['upload_config_init']) && $hooks['upload_config_init'] ? implode(',', $hooks['upload_config_init']) : 'local';
+        $comming=\app\admin\model\Comming::where(['payed'=>1])->count('money');
+        $outing=\app\admin\model\Outting::where(['payed'=>1])->count('money');
         $this->view->assign([
             'totaluser'        => User::count(),
-            'totalviews'       => 219390,
-            'totalorder'       => 32143,
-            'totalorderamount' => 174800,
-            'todayuserlogin'   => 321,
-            'todayusersignup'  => 430,
-            'todayorder'       => 2324,
-            'unsettleorder'    => 132,
-            'sevendnu'         => '80%',
-            'sevendau'         => '32%',
-            'paylist'          => $paylist,
-            'createlist'       => $createlist,
-            'uploadmode'       => $uploadmode
+            'comming'=>$comming,
+            'outing'=>$outing,
+            'totalorderamount'=>$comming-$outing
         ]);
 
         return $this->view->fetch();

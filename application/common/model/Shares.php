@@ -30,14 +30,14 @@ class Shares extends Model
         return $this->hasOne('SharesDetail','id','id');
     }
     public function category(){
-        return $this->hasOne('Category','id','cid');
+        return $this->hasOne('Category','id','cid')->setEagerlyType(0);
     }
-    protected function getNameAttr($value){
-        return $this->category->getData('name');
-    }
-    protected function getCodeAttr($value){
-        return $this->category->diyname;
-    }
+//    protected function getNameAttr($value){
+//        return $this->category->getData('name');
+//    }
+//    protected function getCodeAttr($value){
+//        return $this->category->diyname;
+//    }
     public function makeDetail($flag=0){
         if(empty($this->data)){
             return false;

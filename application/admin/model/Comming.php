@@ -25,13 +25,26 @@ class Comming extends Model implements IFormat
     protected function setTradeIdAttr(){
         return uniqid('in_');
     }
+    protected function getMoneyAttr($value){
+        return $value/100;
+    }
+    protected function getChargeAttr($value){
+        return $value/100;
+    }
+    protected function getPayedAttr($value){
+        if($value==-1){
+            return '失败';
+        }
+        return $value?'成功':'处理中';
+    }
     public function getFormatAttr($value,$data)
     {
         $date=$this->getAttr('date');
-        $money=number_format($this->getAttr('money')/100,2);
-        $payed=$this->getAttr('payed')?'成功':'失败';
-        $charge=number_format($this->getAttr('charge')/100,2);
+        $money=number_format($this->getData('money')/100,2);
+        $payed=$this->getAttr('payed');
+        $charge=number_format($this->getData('charge')/100,2);
         $line="{$payed}于{$date}转入{$money},金额变化为{$charge}";
+        return $line;
     }
 
 

@@ -17,6 +17,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                 url: $.fn.bootstrapTable.defaults.extend.index_url,
                 pk: 'id',
                 sortName: 'id',
+                commonSearch:false,
                 columns: [
                     [
                         {checkbox: true},
@@ -27,7 +28,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                         {field: 'tradeId', title: __('Tradeid')},
                         {field: 'date', title: __('Date')},
                         {field: 'payed', title: __('Payed')},
-                        {field: 'charge', title: __('Charge')},
+                        {field: 'charge', title: __('Charge')}
                     ]
                 ]
             });
