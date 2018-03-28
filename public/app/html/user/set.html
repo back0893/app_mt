@@ -76,7 +76,8 @@
         <li class="layui-this" lay-id="info">我的资料</li>
         <li lay-id="avatar">头像</li>
         <li lay-id="pass">密码</li>
-        <li lay-id="bind">绑定银行卡</li>
+        <li lay-id="bind">绑定支付宝</li>
+        <li lay-id="bind">绑定微型</li>
       </ul>
       <div class="layui-tab-content" style="padding: 20px 0;">
         <div class="layui-form layui-form-pane layui-tab-item layui-show">
@@ -100,7 +101,7 @@
               </div>
             </div>
             <div class="layui-form-item">
-              <label for="L_city" class="layui-form-label">生日</label>
+              <label for="L_birthday" class="layui-form-label">生日</label>
               <div class="layui-input-inline">
                 <input type="text" id="L_birthday" name="birthday" autocomplete="off" value="" class="layui-input">
               </div>
@@ -128,8 +129,8 @@
             <div class="layui-form-item">
               <button class="layui-btn" key="set-mine" lay-filter="info" lay-submit>确认修改</button>
             </div>
+          </form>
           </div>
-                   
           <div class="layui-form layui-form-pane layui-tab-item">
             <div class="layui-form-item">
               <div class="avatar-add">
@@ -172,30 +173,28 @@
           
           <div class="layui-form layui-form-pane layui-tab-item">
           	 <form method="post">
+          	 	<input type='hidden' name='payType' value='wx'>
             <div class="layui-form-item">
-              <label for="L_name" class="layui-form-label">持卡人姓名</label>
+              <label for="L_name" class="layui-form-label">支付宝帐号</label>
               <div class="layui-input-inline">
                 <input type="text" id="L_name" name="name" required lay-verify="required" autocomplete="off" value="" class="layui-input">
               </div>
             </div>
             <div class="layui-form-item">
-              <label for="L_code" class="layui-form-label">银行卡号</label>
+              <label for="L_code" class="layui-form-label">姓名</label>
               <div class="layui-input-inline">
                 <input type="text" id="L_code" name="code" required lay-verify="required" autocomplete="off" value="" class="layui-input">
               </div>
             </div>
-            <div class="layui-form-item">
-              <label for="L_user_code" class="layui-form-label">身份证</label>
-              <div class="layui-input-inline">
-                <input type="text" id="L_user_code" name="user_code" autocomplete="off" value="" class="layui-input">
-              </div>
-            </div>
-            <div class="layui-form-item layui-form-pane">
-        			<label class="layui-form-label">银行地址</label>
-       				 <input type="text" name="address" id='address' autocomplete="off" value="" class="layui-input" placeholder="地址">
-    					</div>
-            <div class="layui-form-item">
               <button class="layui-btn" key="set-mine" lay-filter="bank" lay-submit>绑定</button>
+            </div>
+            
+            <div class="layui-form-pane layui-tab-item">
+          		<p>微信提现发送红包</p>
+          		<p>这样就自能是关注公众号才能实现了.</p>
+          		<img src='#' title='公众号二维码'>
+          		<p>用户关注后,发送红包</p>
+          		<p>但是时间最少需要90天才行</p>
             </div>
           </div>
           </div>
@@ -213,19 +212,18 @@
 <script src="../../res/layui/layui.js"></script>
 <script src="../../res/my/config.js"></script>
 <script>
-layui.use('element', function(){
-  var element = layui.element;
-});
-window.layer;
-layui.use('layer',function(){
-	window.layer=layui.layer;
-})
-window.$;
-layui.use(['form','layedit','laydate'],function(){
+layui.use(['form','layedit','laydate','layer','upload','element'],function(){
+    var element = layui.element;
 	var form=layui.form;
+	var layer=layui.layer;
 	var layedit=layui.layedit;
-	var laydate=layui.laudate;
+	var laydate=layui.laydate;
 	var $=layui.$;
+
+    laydate.render({
+        elem: '#L_birthday' //指定元素
+    });
+
 	 $(function(){
   	if(localStorage.getItem('userInfo')){
 		  	$('.unlogin').hide();
@@ -241,8 +239,7 @@ layui.use(['form','layedit','laydate'],function(){
 		 $.post(config.domain+'api/user/money.html',{token:localStorage.getItem('token')},function(response){
 		 	$('#free').val(response.data.free);
 		 });
-  })
-	window.$=$;
+  });
 	var userInfo=JSON.parse(localStorage.getItem('userInfo'));
 	var bank=JSON.parse(localStorage.getItem('bank'));
 	$('#L_email').val(userInfo.email);
@@ -252,20 +249,20 @@ layui.use(['form','layedit','laydate'],function(){
 	$('#L_name').val(bank.name);
 	$('#L_code').val(bank.code);
 	$('#L_user_code').val(bank.user_code);
-	$('#address').val(bank.address)
+	$('#address').val(bank.address);
 	
 	
 	
 	  //手机设备的简单适配
   var treeMobile = $('.site-tree-mobile')
-  ,shadeMobile = $('.site-mobile-shade')
+  ,shadeMobile = $('.site-mobile-shade');
 
-treeMobile.on('click', function(){
-    $('body').addClass('site-mobile');
-});
-shadeMobile.on('click', function(){
-    $('body').removeClass('site-mobile');
-});
+  treeMobile.on('click', function(){
+      $('body').addClass('site-mobile');
+  });
+  shadeMobile.on('click', function(){
+      $('body').removeClass('site-mobile');
+  });
 	
 	
 	
@@ -305,7 +302,7 @@ shadeMobile.on('click', function(){
 	form.on('submit(bank)',function(data){
 		var token=localStorage.getItem('token');
 		var tmp=$.extend(data.field,{token:token});
-		$.post(config.domain+'/api/user/bindBank.html',tmp,function(response){
+		$.post(config.domain+'/api/user/bindAli.html',tmp,function(response){
 			if(response.code){
 				layer.alert('绑定成功');
 				localStorage.setItem('bank',JSON.stringify(data.field));
@@ -316,67 +313,57 @@ shadeMobile.on('click', function(){
 		});
 		return false;
 	});
-});
-layui.use('laydate', function(){
-  var laydate = layui.laydate;
-  //执行一个laydate实例
-  laydate.render({
-    elem: '#L_birthday' //指定元素
-  });
+    var upload=layui.upload;
+    if(!localStorage.getItem('userInfo')){
+        location.href='/user/login.html';
+    }
+    var userInfo=JSON.parse(localStorage.getItem('userInfo'));
+    $('#avatar').attr('src',userInfo.avatar);
+    var uploadInst=upload.render({
+        elem:'#upload_img',
+        url:config.domain+'api/user/icon.html',
+        data:{token:localStorage.getItem('token')},
+        done:function(res){
+            if(res.code){
+                userInfo.avatar=res.data.avatar;
+                localStorage.setItem('userInfo',JSON.stringify(userInfo));
+                localStorage.setItem('avatar',res.data.avatar);
+                layer.alert('头像更新完成');
+                $('#avatar').attr('src',res.data.avatar);
+                location.reload();
+            }
+
+        },
+        error:function(res){
+            layer.alert('上传失败,请稍后再试');
+        }
+    });
+    $('#in').click(function(){
+        layer.open({
+            type: 2,
+            title: '充值',
+            skin:'layui-layer-molv',
+            shadeClose: true,
+            shade: false,
+            area:['100%','100%'],
+            maxmin: true, //开启最大化最小化按钮
+            content: './in.html'
+        });
+    });
+    $('#out').click(function(){
+        layer.open({
+            type: 2,
+            title: '转出',
+            area:['100%','100%'],
+            skin:'layui-layer-molv',
+            shadeClose: true,
+            shade: false,
+            maxmin: true, //开启最大化最小化按钮
+            content: './out.html'
+        });
+    })
 });
 
-layui.use(['upload','layer'],function(){
-	var upload=layui.upload;
-	var $=layui.$;
-	if(!localStorage.getItem('userInfo')){
-		location.href='/user/login.html';
-	}
-	var userInfo=JSON.parse(localStorage.getItem('userInfo'));
-	$('#avatar').attr('src',userInfo.avatar);
-	var uploadInst=upload.render({
-		elem:'#upload_img',
-		url:config.domain+'api/user/icon.html',
-		data:{token:localStorage.getItem('token')},
-		done:function(res){
-			if(res.code){
-				userInfo.avatar=res.data.avatar;
-				localStorage.setItem('userInfo',JSON.stringify(userInfo));
-				localStorage.setItem('avatar',res.data.avatar);
-				layer.alert('头像更新完成');
-				$('#avatar').attr('src',res.data.avatar);
-				location.reload();
-			}
-			
-		},
-		error:function(res){
-			layer.alert('上传失败,请稍后再试');
-		}
-	});
-	$('#in').click(function(){
-	layer.open({
-      type: 2,
-      title: '充值',
-      skin:'layui-layer-molv',
-      shadeClose: true,
-      shade: false,
-      area:['100%','100%'],
-      maxmin: true, //开启最大化最小化按钮
-      content: './in.html'
-   });
-	});
-	$('#out').click(function(){
-			layer.open({
-      type: 2,
-      title: '转出',
-      area:['100%','100%'],
-      skin:'layui-layer-molv',
-      shadeClose: true,
-      shade: false,
-      maxmin: true, //开启最大化最小化按钮
-      content: './out.html'
-   });
-	})
-})
 </script>
 </body>
 </html>
