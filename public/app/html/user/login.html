@@ -103,8 +103,8 @@ form.on('submit(*)', function(data){
 			localStorage.setItem('userInfo',JSON.stringify(config.userInfo));
 			localStorage.setItem('bank',JSON.stringify(response.data.bank));
 			localStorage.setItem('token',config.userInfo.token);
+			layer.close(index);
 			setTimeout(function(){
-				layer.close(index);
 				window.location.href='index.html';
 			},1000)
 		}

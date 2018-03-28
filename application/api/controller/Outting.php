@@ -11,6 +11,8 @@ namespace app\api\controller;
 
 
 use app\api\helper\Response;
+use app\api\model\Bank;
+use app\api\model\TransferAli;
 use app\common\controller\Api;
 use think\Db;
 use think\Exception;
@@ -21,30 +23,28 @@ class Outting extends Api
     protected $noNeedLogin=['notify'];
 
     public function outting(){
-        if($this->request->isPost()){
-            $data=input('','','trim');
-            $user=$this->auth->getUser();
-            if($data['money']>$user->money){
-                return Response::error('金额不足');
-            }
-            $data['uid']=$user->id;
-            $data['payed']=0;
-            $data['charge']=0;
-            $model=new \app\admin\model\Outting();
-            //调用sdk,发送提款信息,成功后保存mysql
-            $r=$model->allowField(true)
-                ->save($data);
-            if($r===false){
-                return Response::error('提款失败');
-            }
-            return Response::success('提款成功,请等待到账');
-        }
+        $data=input('','','trim');
         $user=$this->auth->getUser();
-        //获取对应的绑定默认银行
-        $bank=$user->bank;
-        $free=$user['money'];
-        //这里前台的银行最好使用纯js插件实现
-        return Response::success('',['free'=>$free,'bank'=>$bank]);
+        $data['money']=intval($data['money'])*100;
+        if($data['money']>$user->getData('money')){
+            return Response::error('金额不足');
+        }
+        $bind=Bank::where(['uid'=>$user->id])->find();
+        $data['uid']=$user->id;
+        $data['payed']=0;
+        $data['charge']=0;
+        $data['name']=$bind->getData('name');
+        $data['payee_account']=$bind->payee_account;
+        $data['tradeId']=uniqid('out_');
+        $model=new \app\admin\model\Outting();
+        $model->allowField(true)
+            ->save($data);
+        $transfer=new TransferAli();
+        $r=$transfer->transfer($data);
+        if($r===false){
+            return Response::error('提款失败');
+        }
+        return Response::success('提款成功,请等待到账');
     }
     public function notify(){
         $data=file_get_contents('php://input');
@@ -53,10 +53,17 @@ class Outting extends Api
         $tradeid=$data['tradeid'];
         $out=\app\admin\model\Outting::get(['tradeId'=>$tradeid]);
         $user=\app\admin\model\User::get($out->uid);
-        $user->money-=$data['money'];
-        $out->money=$data['money'];
-        $out->payed=1;
-        $out->charge=1;
+        $userMoney= $user->getData('money');
+        $userMoney-=$data['money'];
+        if($userMoney<0){
+            $out->payed=-1;
+        }else{
+            $out->payed=1;
+            $out->money=$data['money'];
+            $out->readed=0;
+            $out->charge= $userMoney;
+            $user->money=$userMoney;
+        }
         Db::startTrans();
         try{
             $r1=$user->isUpdate(true)

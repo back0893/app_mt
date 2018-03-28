@@ -359,12 +359,22 @@ layui.use(['upload','layer'],function(){
       skin:'layui-layer-molv',
       shadeClose: true,
       shade: false,
+      area:['100%','100%'],
       maxmin: true, //开启最大化最小化按钮
       content: './in.html'
    });
 	});
 	$('#out').click(function(){
-		
+			layer.open({
+      type: 2,
+      title: '转出',
+      area:['100%','100%'],
+      skin:'layui-layer-molv',
+      shadeClose: true,
+      shade: false,
+      maxmin: true, //开启最大化最小化按钮
+      content: './out.html'
+   });
 	})
 })
 </script>

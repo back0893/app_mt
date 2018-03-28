@@ -22,10 +22,6 @@ class Outting extends Model implements IFormat
     protected $append = [
 
     ];
-    protected $insert=['tradeId'];
-    protected function setTradeIdAttr(){
-        return uniqid('out_');
-    }
     protected function getDateAttr($value){
         return date($this->dateFormat,$value);
     }

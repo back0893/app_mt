@@ -48,7 +48,7 @@ class Trade extends Api
             'createtime'=>time()
         ];
         //检查用户是否有足够的钱
-        $money=$user->money-$data['money'];
+        $money=$user->getData('money')-$data['money'];
         if($money<0){
             return Response::error('金额不足');
         }
@@ -98,7 +98,7 @@ class Trade extends Api
                 return Response::error('数量不足');
             }
             $total=intval($number*$price*100);
-            $user->money+=$total;
+            $user->money=$user->getData('money')+$total;
             $product['number']-=$number;
             if($product['number']==0){
                 unset($owner[$code]);
@@ -110,7 +110,7 @@ class Trade extends Api
             $data=[
                 'money'=>$total,
                 'number'=>$number,
-                'price'=>$price,
+                'price'=>$price*100,
                 'status'=>2,
                 'code'=>$code,
                 'uid'=>$user->id,

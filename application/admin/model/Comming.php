@@ -13,7 +13,7 @@ class Comming extends Model implements IFormat
     
     // 自动写入时间戳字段
     protected $autoWriteTimestamp = true;
-
+    protected $dateFormat='Y-m-d H:i:s';
     // 定义时间戳字段名
     protected $createTime = 'date';
     protected $updateTime = false;
@@ -21,10 +21,6 @@ class Comming extends Model implements IFormat
     // 追加属性
     protected $append = [
     ];
-    protected $insert=['tradeId'];
-    protected function setTradeIdAttr(){
-        return uniqid('in_');
-    }
     protected function getMoneyAttr($value){
         return $value/100;
     }

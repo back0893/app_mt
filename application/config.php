@@ -256,4 +256,5 @@ return [
         'version'          => '1.0.0.20180308_beta',
         'api_url'          => 'http://api.fastadmin.net',
     ],
+    'webName'=>'测试啊'
 ];

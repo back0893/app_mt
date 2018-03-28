@@ -1,0 +1,1237 @@
+---------------------------------------------------------------
+[ 2018-03-27T17:53:53+08:00 ] 127.0.0.1 POST /api/history/pageCount.html
+[ info ] mtapp.cc/api/history/pageCount.html [运行时间：0.115722s][吞吐率：8.64req/s] [内存消耗：2,858.30kb] [文件加载：77]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000023s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.004380s ]
+[ info ] [ LANG ] E:\app_mt\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'history',
+    2 => 'pageCount',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'mtapp.cc',
+  'connection' => 'keep-alive',
+  'content-length' => '42',
+  'accept' => '*/*',
+  'origin' => 'null',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8,en-US;q=0.6,en;q=0.4',
+)
+[ info ] [ PARAM ] array (
+  'token' => 'c700a2af-2185-4afc-b538-15b94de9709d',
+)
+[ info ] [ LANG ] E:\app_mt\public/../application/api\lang\zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.000322s ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\api\controller\History->pageCount[ E:\app_mt\application\api\controller\History.php ]
+[ info ] [ BEHAVIOR ] Run app\api\behavior\Corss @response_send [ RunTime:0.000200s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000783s ] mysql:host=127.0.0.1;dbname=test;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_user_token` [ RunTime:0.015360s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_user_token` WHERE  `token` = 'c700a2af-2185-4afc-b538-15b94de9709d' LIMIT 1 [ RunTime:0.000270s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_user` [ RunTime:0.016055s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_user` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.000401s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_category` [ RunTime:0.015231s ]
+[ sql ] [ SQL ] SELECT `diyname`,`name` FROM `fa_category` [ RunTime:0.000222s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_trade` [ RunTime:0.018318s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `fa_trade` WHERE  `uid` = 2 LIMIT 1 [ RunTime:0.000261s ]
+---------------------------------------------------------------
+[ 2018-03-27T17:53:53+08:00 ] 127.0.0.1 POST /api/history/own.html
+[ info ] mtapp.cc/api/history/own.html [运行时间：0.110779s][吞吐率：9.03req/s] [内存消耗：2,836.60kb] [文件加载：76]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000023s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.002294s ]
+[ info ] [ LANG ] E:\app_mt\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'history',
+    2 => 'own',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'mtapp.cc',
+  'connection' => 'keep-alive',
+  'content-length' => '49',
+  'accept' => '*/*',
+  'origin' => 'null',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8,en-US;q=0.6,en;q=0.4',
+)
+[ info ] [ PARAM ] array (
+  'token' => 'c700a2af-2185-4afc-b538-15b94de9709d',
+  'page' => '1',
+)
+[ info ] [ LANG ] E:\app_mt\public/../application/api\lang\zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.000365s ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\api\controller\History->own[ E:\app_mt\application\api\controller\History.php ]
+[ info ] [ BEHAVIOR ] Run app\api\behavior\Corss @response_send [ RunTime:0.000245s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001461s ] mysql:host=127.0.0.1;dbname=test;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_user_token` [ RunTime:0.017886s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_user_token` WHERE  `token` = 'c700a2af-2185-4afc-b538-15b94de9709d' LIMIT 1 [ RunTime:0.000289s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_user` [ RunTime:0.022559s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_user` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.000344s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_category` [ RunTime:0.022622s ]
+[ sql ] [ SQL ] SELECT `diyname`,`name` FROM `fa_category` [ RunTime:0.000372s ]
+---------------------------------------------------------------
+[ 2018-03-27T17:53:53+08:00 ] 127.0.0.1 POST /api/history/index.html
+[ info ] mtapp.cc/api/history/index.html [运行时间：0.164358s][吞吐率：6.08req/s] [内存消耗：2,893.41kb] [文件加载：77]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000149s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.004520s ]
+[ info ] [ LANG ] E:\app_mt\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'history',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'mtapp.cc',
+  'connection' => 'keep-alive',
+  'content-length' => '49',
+  'accept' => '*/*',
+  'origin' => 'null',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8,en-US;q=0.6,en;q=0.4',
+)
+[ info ] [ PARAM ] array (
+  'token' => 'c700a2af-2185-4afc-b538-15b94de9709d',
+  'page' => '1',
+)
+[ info ] [ LANG ] E:\app_mt\public/../application/api\lang\zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.001170s ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\api\controller\History->index[ E:\app_mt\application\api\controller\History.php ]
+[ info ] [ BEHAVIOR ] Run app\api\behavior\Corss @response_send [ RunTime:0.000511s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000755s ] mysql:host=127.0.0.1;dbname=test;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_user_token` [ RunTime:0.020889s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_user_token` WHERE  `token` = 'c700a2af-2185-4afc-b538-15b94de9709d' LIMIT 1 [ RunTime:0.000455s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_user` [ RunTime:0.023844s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_user` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.000407s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_category` [ RunTime:0.024642s ]
+[ sql ] [ SQL ] SELECT `diyname`,`name` FROM `fa_category` [ RunTime:0.000253s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_trade` [ RunTime:0.020397s ]
+[ sql ] [ SQL ] SELECT `status`,`money`,`number`,`price`,`code`,`createtime` FROM `fa_trade` WHERE  `uid` = 2 ORDER BY `createtime`  desc LIMIT 0,10 [ RunTime:0.000311s ]
+[ sql ] [ SQL ] SELECT `diyname`,`name` FROM `fa_category` [ RunTime:0.000151s ]
+[ sql ] [ SQL ] SELECT `diyname`,`name` FROM `fa_category` [ RunTime:0.000135s ]
+[ sql ] [ SQL ] SELECT `diyname`,`name` FROM `fa_category` [ RunTime:0.000340s ]
+[ sql ] [ SQL ] SELECT `diyname`,`name` FROM `fa_category` [ RunTime:0.000175s ]
+[ sql ] [ SQL ] SELECT `diyname`,`name` FROM `fa_category` [ RunTime:0.000142s ]
+[ sql ] [ SQL ] SELECT `diyname`,`name` FROM `fa_category` [ RunTime:0.000350s ]
+[ sql ] [ SQL ] SELECT `diyname`,`name` FROM `fa_category` [ RunTime:0.000172s ]
+[ sql ] [ SQL ] SELECT `diyname`,`name` FROM `fa_category` [ RunTime:0.000171s ]
+[ sql ] [ SQL ] SELECT `diyname`,`name` FROM `fa_category` [ RunTime:0.000176s ]
+[ sql ] [ SQL ] SELECT `diyname`,`name` FROM `fa_category` [ RunTime:0.000205s ]
+---------------------------------------------------------------
+[ 2018-03-27T17:54:01+08:00 ] 127.0.0.1 POST /api/user/money.html
+[ info ] mtapp.cc/api/user/money.html [运行时间：0.200028s][吞吐率：5.00req/s] [内存消耗：2,871.38kb] [文件加载：75]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000031s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.008578s ]
+[ info ] [ LANG ] E:\app_mt\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'user',
+    2 => 'money',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'mtapp.cc',
+  'connection' => 'keep-alive',
+  'content-length' => '42',
+  'accept' => '*/*',
+  'origin' => 'null',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8,en-US;q=0.6,en;q=0.4',
+)
+[ info ] [ PARAM ] array (
+  'token' => 'c700a2af-2185-4afc-b538-15b94de9709d',
+)
+[ info ] [ LANG ] E:\app_mt\public/../application/api\lang\zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.000675s ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LANG ] E:\app_mt\public/../application/api/lang/zh-cn/user.php
+[ info ] [ RUN ] app\api\controller\User->money[ E:\app_mt\application\api\controller\User.php ]
+[ info ] [ BEHAVIOR ] Run app\api\behavior\Corss @response_send [ RunTime:0.000254s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001959s ] mysql:host=127.0.0.1;dbname=test;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_user_token` [ RunTime:0.048330s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_user_token` WHERE  `token` = 'c700a2af-2185-4afc-b538-15b94de9709d' LIMIT 1 [ RunTime:0.000284s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_user` [ RunTime:0.050180s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_user` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.000697s ]
+---------------------------------------------------------------
+[ 2018-03-27T17:56:02+08:00 ] 127.0.0.1 POST /api/user/money.html
+[ info ] mtapp.cc/api/user/money.html [运行时间：0.089015s][吞吐率：11.23req/s] [内存消耗：2,871.90kb] [文件加载：75]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000022s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.003643s ]
+[ info ] [ LANG ] E:\app_mt\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'user',
+    2 => 'money',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'mtapp.cc',
+  'connection' => 'keep-alive',
+  'content-length' => '42',
+  'accept' => '*/*',
+  'origin' => 'null',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8,en-US;q=0.6,en;q=0.4',
+)
+[ info ] [ PARAM ] array (
+  'token' => 'c700a2af-2185-4afc-b538-15b94de9709d',
+)
+[ info ] [ LANG ] E:\app_mt\public/../application/api\lang\zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.000795s ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LANG ] E:\app_mt\public/../application/api/lang/zh-cn/user.php
+[ info ] [ RUN ] app\api\controller\User->money[ E:\app_mt\application\api\controller\User.php ]
+[ info ] [ BEHAVIOR ] Run app\api\behavior\Corss @response_send [ RunTime:0.000519s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000828s ] mysql:host=127.0.0.1;dbname=test;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_user_token` [ RunTime:0.015193s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_user_token` WHERE  `token` = 'c700a2af-2185-4afc-b538-15b94de9709d' LIMIT 1 [ RunTime:0.000322s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_user` [ RunTime:0.015355s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_user` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.000383s ]
+---------------------------------------------------------------
+[ 2018-03-27T17:56:04+08:00 ] 127.0.0.1 POST /api/user/money.html
+[ info ] mtapp.cc/api/user/money.html [运行时间：0.077533s][吞吐率：12.90req/s] [内存消耗：2,871.90kb] [文件加载：75]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000026s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.004072s ]
+[ info ] [ LANG ] E:\app_mt\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'user',
+    2 => 'money',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'mtapp.cc',
+  'connection' => 'keep-alive',
+  'content-length' => '42',
+  'accept' => '*/*',
+  'origin' => 'null',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8,en-US;q=0.6,en;q=0.4',
+)
+[ info ] [ PARAM ] array (
+  'token' => 'c700a2af-2185-4afc-b538-15b94de9709d',
+)
+[ info ] [ LANG ] E:\app_mt\public/../application/api\lang\zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.000343s ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LANG ] E:\app_mt\public/../application/api/lang/zh-cn/user.php
+[ info ] [ RUN ] app\api\controller\User->money[ E:\app_mt\application\api\controller\User.php ]
+[ info ] [ BEHAVIOR ] Run app\api\behavior\Corss @response_send [ RunTime:0.000206s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001554s ] mysql:host=127.0.0.1;dbname=test;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_user_token` [ RunTime:0.017515s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_user_token` WHERE  `token` = 'c700a2af-2185-4afc-b538-15b94de9709d' LIMIT 1 [ RunTime:0.000307s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_user` [ RunTime:0.016194s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_user` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.000410s ]
+---------------------------------------------------------------
+[ 2018-03-27T17:56:07+08:00 ] 127.0.0.1 POST /api/history/pageCount.html
+[ info ] mtapp.cc/api/history/pageCount.html [运行时间：0.109564s][吞吐率：9.13req/s] [内存消耗：2,858.64kb] [文件加载：77]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000019s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.002576s ]
+[ info ] [ LANG ] E:\app_mt\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'history',
+    2 => 'pageCount',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'mtapp.cc',
+  'connection' => 'keep-alive',
+  'content-length' => '42',
+  'accept' => '*/*',
+  'origin' => 'null',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8,en-US;q=0.6,en;q=0.4',
+)
+[ info ] [ PARAM ] array (
+  'token' => 'c700a2af-2185-4afc-b538-15b94de9709d',
+)
+[ info ] [ LANG ] E:\app_mt\public/../application/api\lang\zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.000311s ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\api\controller\History->pageCount[ E:\app_mt\application\api\controller\History.php ]
+[ info ] [ BEHAVIOR ] Run app\api\behavior\Corss @response_send [ RunTime:0.000197s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000989s ] mysql:host=127.0.0.1;dbname=test;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_user_token` [ RunTime:0.016870s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_user_token` WHERE  `token` = 'c700a2af-2185-4afc-b538-15b94de9709d' LIMIT 1 [ RunTime:0.000488s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_user` [ RunTime:0.014890s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_user` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.000663s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_category` [ RunTime:0.016460s ]
+[ sql ] [ SQL ] SELECT `diyname`,`name` FROM `fa_category` [ RunTime:0.000411s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_trade` [ RunTime:0.016309s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `fa_trade` WHERE  `uid` = 2 LIMIT 1 [ RunTime:0.000355s ]
+---------------------------------------------------------------
+[ 2018-03-27T17:56:07+08:00 ] 127.0.0.1 POST /api/history/own.html
+[ info ] mtapp.cc/api/history/own.html [运行时间：0.119661s][吞吐率：8.36req/s] [内存消耗：2,837.13kb] [文件加载：76]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000021s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.003092s ]
+[ info ] [ LANG ] E:\app_mt\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'history',
+    2 => 'own',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'mtapp.cc',
+  'connection' => 'keep-alive',
+  'content-length' => '49',
+  'accept' => '*/*',
+  'origin' => 'null',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8,en-US;q=0.6,en;q=0.4',
+)
+[ info ] [ PARAM ] array (
+  'token' => 'c700a2af-2185-4afc-b538-15b94de9709d',
+  'page' => '1',
+)
+[ info ] [ LANG ] E:\app_mt\public/../application/api\lang\zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.000765s ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\api\controller\History->own[ E:\app_mt\application\api\controller\History.php ]
+[ info ] [ BEHAVIOR ] Run app\api\behavior\Corss @response_send [ RunTime:0.000519s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000722s ] mysql:host=127.0.0.1;dbname=test;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_user_token` [ RunTime:0.024368s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_user_token` WHERE  `token` = 'c700a2af-2185-4afc-b538-15b94de9709d' LIMIT 1 [ RunTime:0.000298s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_user` [ RunTime:0.020989s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_user` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.000467s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_category` [ RunTime:0.021116s ]
+[ sql ] [ SQL ] SELECT `diyname`,`name` FROM `fa_category` [ RunTime:0.000200s ]
+---------------------------------------------------------------
+[ 2018-03-27T17:56:07+08:00 ] 127.0.0.1 POST /api/history/index.html
+[ info ] mtapp.cc/api/history/index.html [运行时间：0.142805s][吞吐率：7.00req/s] [内存消耗：2,893.93kb] [文件加载：77]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000019s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.002586s ]
+[ info ] [ LANG ] E:\app_mt\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'history',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'mtapp.cc',
+  'connection' => 'keep-alive',
+  'content-length' => '49',
+  'accept' => '*/*',
+  'origin' => 'null',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8,en-US;q=0.6,en;q=0.4',
+)
+[ info ] [ PARAM ] array (
+  'token' => 'c700a2af-2185-4afc-b538-15b94de9709d',
+  'page' => '1',
+)
+[ info ] [ LANG ] E:\app_mt\public/../application/api\lang\zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.000338s ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\api\controller\History->index[ E:\app_mt\application\api\controller\History.php ]
+[ info ] [ BEHAVIOR ] Run app\api\behavior\Corss @response_send [ RunTime:0.000201s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000707s ] mysql:host=127.0.0.1;dbname=test;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_user_token` [ RunTime:0.040914s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_user_token` WHERE  `token` = 'c700a2af-2185-4afc-b538-15b94de9709d' LIMIT 1 [ RunTime:0.000236s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_user` [ RunTime:0.020970s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_user` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.000370s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_category` [ RunTime:0.020295s ]
+[ sql ] [ SQL ] SELECT `diyname`,`name` FROM `fa_category` [ RunTime:0.000310s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_trade` [ RunTime:0.018160s ]
+[ sql ] [ SQL ] SELECT `status`,`money`,`number`,`price`,`code`,`createtime` FROM `fa_trade` WHERE  `uid` = 2 ORDER BY `createtime`  desc LIMIT 0,10 [ RunTime:0.000336s ]
+[ sql ] [ SQL ] SELECT `diyname`,`name` FROM `fa_category` [ RunTime:0.000161s ]
+[ sql ] [ SQL ] SELECT `diyname`,`name` FROM `fa_category` [ RunTime:0.000135s ]
+[ sql ] [ SQL ] SELECT `diyname`,`name` FROM `fa_category` [ RunTime:0.000131s ]
+[ sql ] [ SQL ] SELECT `diyname`,`name` FROM `fa_category` [ RunTime:0.000129s ]
+[ sql ] [ SQL ] SELECT `diyname`,`name` FROM `fa_category` [ RunTime:0.000130s ]
+[ sql ] [ SQL ] SELECT `diyname`,`name` FROM `fa_category` [ RunTime:0.000130s ]
+[ sql ] [ SQL ] SELECT `diyname`,`name` FROM `fa_category` [ RunTime:0.000127s ]
+[ sql ] [ SQL ] SELECT `diyname`,`name` FROM `fa_category` [ RunTime:0.000124s ]
+[ sql ] [ SQL ] SELECT `diyname`,`name` FROM `fa_category` [ RunTime:0.000181s ]
+[ sql ] [ SQL ] SELECT `diyname`,`name` FROM `fa_category` [ RunTime:0.000152s ]
+---------------------------------------------------------------
+[ 2018-03-27T17:56:11+08:00 ] 127.0.0.1 POST /api/user/getIO.html
+[ info ] mtapp.cc/api/user/getIO.html [运行时间：0.189862s][吞吐率：5.27req/s] [内存消耗：2,904.92kb] [文件加载：78]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000034s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.003801s ]
+[ info ] [ LANG ] E:\app_mt\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'user',
+    2 => 'getIO',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'mtapp.cc',
+  'connection' => 'keep-alive',
+  'content-length' => '42',
+  'accept' => '*/*',
+  'origin' => 'null',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8,en-US;q=0.6,en;q=0.4',
+)
+[ info ] [ PARAM ] array (
+  'token' => 'c700a2af-2185-4afc-b538-15b94de9709d',
+)
+[ info ] [ LANG ] E:\app_mt\public/../application/api\lang\zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.000346s ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LANG ] E:\app_mt\public/../application/api/lang/zh-cn/user.php
+[ info ] [ RUN ] app\api\controller\User->getIO[ E:\app_mt\application\api\controller\User.php ]
+[ info ] [ BEHAVIOR ] Run app\api\behavior\Corss @response_send [ RunTime:0.000192s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010497s ] mysql:host=127.0.0.1;dbname=test;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_user_token` [ RunTime:0.020718s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_user_token` WHERE  `token` = 'c700a2af-2185-4afc-b538-15b94de9709d' LIMIT 1 [ RunTime:0.000393s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_user` [ RunTime:0.014854s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_user` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.000522s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_comming` [ RunTime:0.016276s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_comming` WHERE  `uid` = 2  AND `readed` = 0 ORDER BY date desc [ RunTime:0.024414s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_outting` [ RunTime:0.030127s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_outting` WHERE  `uid` = 2  AND `readed` = 0 ORDER BY date desc [ RunTime:0.027145s ]
+---------------------------------------------------------------
+[ 2018-03-27T17:57:43+08:00 ] 127.0.0.1 POST /api/user/money.html
+[ info ] mtapp.cc/api/user/money.html [运行时间：0.119276s][吞吐率：8.38req/s] [内存消耗：2,871.90kb] [文件加载：75]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000029s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.007646s ]
+[ info ] [ LANG ] E:\app_mt\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'user',
+    2 => 'money',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'mtapp.cc',
+  'connection' => 'keep-alive',
+  'content-length' => '42',
+  'accept' => '*/*',
+  'origin' => 'null',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8,en-US;q=0.6,en;q=0.4',
+)
+[ info ] [ PARAM ] array (
+  'token' => 'c700a2af-2185-4afc-b538-15b94de9709d',
+)
+[ info ] [ LANG ] E:\app_mt\public/../application/api\lang\zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.000522s ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LANG ] E:\app_mt\public/../application/api/lang/zh-cn/user.php
+[ info ] [ RUN ] app\api\controller\User->money[ E:\app_mt\application\api\controller\User.php ]
+[ info ] [ BEHAVIOR ] Run app\api\behavior\Corss @response_send [ RunTime:0.000218s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000823s ] mysql:host=127.0.0.1;dbname=test;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_user_token` [ RunTime:0.024449s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_user_token` WHERE  `token` = 'c700a2af-2185-4afc-b538-15b94de9709d' LIMIT 1 [ RunTime:0.000359s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_user` [ RunTime:0.018771s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_user` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.000765s ]
+---------------------------------------------------------------
+[ 2018-03-27T17:57:43+08:00 ] 127.0.0.1 POST /api/history/pageCount.html
+[ info ] mtapp.cc/api/history/pageCount.html [运行时间：0.125207s][吞吐率：7.99req/s] [内存消耗：2,858.64kb] [文件加载：77]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000019s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.004725s ]
+[ info ] [ LANG ] E:\app_mt\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'history',
+    2 => 'pageCount',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'mtapp.cc',
+  'connection' => 'keep-alive',
+  'content-length' => '42',
+  'accept' => '*/*',
+  'origin' => 'null',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8,en-US;q=0.6,en;q=0.4',
+)
+[ info ] [ PARAM ] array (
+  'token' => 'c700a2af-2185-4afc-b538-15b94de9709d',
+)
+[ info ] [ LANG ] E:\app_mt\public/../application/api\lang\zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.000398s ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\api\controller\History->pageCount[ E:\app_mt\application\api\controller\History.php ]
+[ info ] [ BEHAVIOR ] Run app\api\behavior\Corss @response_send [ RunTime:0.000203s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001336s ] mysql:host=127.0.0.1;dbname=test;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_user_token` [ RunTime:0.018675s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_user_token` WHERE  `token` = 'c700a2af-2185-4afc-b538-15b94de9709d' LIMIT 1 [ RunTime:0.000304s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_user` [ RunTime:0.014880s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_user` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.000476s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_category` [ RunTime:0.020634s ]
+[ sql ] [ SQL ] SELECT `diyname`,`name` FROM `fa_category` [ RunTime:0.000255s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_trade` [ RunTime:0.019251s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `fa_trade` WHERE  `uid` = 2 LIMIT 1 [ RunTime:0.000274s ]
+---------------------------------------------------------------
+[ 2018-03-27T17:57:43+08:00 ] 127.0.0.1 POST /api/history/own.html
+[ info ] mtapp.cc/api/history/own.html [运行时间：0.124213s][吞吐率：8.05req/s] [内存消耗：2,837.13kb] [文件加载：76]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000021s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.003120s ]
+[ info ] [ LANG ] E:\app_mt\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'history',
+    2 => 'own',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'mtapp.cc',
+  'connection' => 'keep-alive',
+  'content-length' => '49',
+  'accept' => '*/*',
+  'origin' => 'null',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8,en-US;q=0.6,en;q=0.4',
+)
+[ info ] [ PARAM ] array (
+  'token' => 'c700a2af-2185-4afc-b538-15b94de9709d',
+  'page' => '1',
+)
+[ info ] [ LANG ] E:\app_mt\public/../application/api\lang\zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.000385s ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\api\controller\History->own[ E:\app_mt\application\api\controller\History.php ]
+[ info ] [ BEHAVIOR ] Run app\api\behavior\Corss @response_send [ RunTime:0.000256s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000698s ] mysql:host=127.0.0.1;dbname=test;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_user_token` [ RunTime:0.024340s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_user_token` WHERE  `token` = 'c700a2af-2185-4afc-b538-15b94de9709d' LIMIT 1 [ RunTime:0.000308s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_user` [ RunTime:0.019316s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_user` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.000459s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_category` [ RunTime:0.029893s ]
+[ sql ] [ SQL ] SELECT `diyname`,`name` FROM `fa_category` [ RunTime:0.000357s ]
+---------------------------------------------------------------
+[ 2018-03-27T17:57:43+08:00 ] 127.0.0.1 POST /api/history/index.html
+[ info ] mtapp.cc/api/history/index.html [运行时间：0.155204s][吞吐率：6.44req/s] [内存消耗：2,893.93kb] [文件加载：77]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000035s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.005498s ]
+[ info ] [ LANG ] E:\app_mt\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'history',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'mtapp.cc',
+  'connection' => 'keep-alive',
+  'content-length' => '49',
+  'accept' => '*/*',
+  'origin' => 'null',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8,en-US;q=0.6,en;q=0.4',
+)
+[ info ] [ PARAM ] array (
+  'token' => 'c700a2af-2185-4afc-b538-15b94de9709d',
+  'page' => '1',
+)
+[ info ] [ LANG ] E:\app_mt\public/../application/api\lang\zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.000373s ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\api\controller\History->index[ E:\app_mt\application\api\controller\History.php ]
+[ info ] [ BEHAVIOR ] Run app\api\behavior\Corss @response_send [ RunTime:0.000211s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000807s ] mysql:host=127.0.0.1;dbname=test;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_user_token` [ RunTime:0.020987s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_user_token` WHERE  `token` = 'c700a2af-2185-4afc-b538-15b94de9709d' LIMIT 1 [ RunTime:0.000340s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_user` [ RunTime:0.023149s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_user` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.000502s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_category` [ RunTime:0.024341s ]
+[ sql ] [ SQL ] SELECT `diyname`,`name` FROM `fa_category` [ RunTime:0.000273s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_trade` [ RunTime:0.026954s ]
+[ sql ] [ SQL ] SELECT `status`,`money`,`number`,`price`,`code`,`createtime` FROM `fa_trade` WHERE  `uid` = 2 ORDER BY `createtime`  desc LIMIT 0,10 [ RunTime:0.000398s ]
+[ sql ] [ SQL ] SELECT `diyname`,`name` FROM `fa_category` [ RunTime:0.000766s ]
+[ sql ] [ SQL ] SELECT `diyname`,`name` FROM `fa_category` [ RunTime:0.001700s ]
+[ sql ] [ SQL ] SELECT `diyname`,`name` FROM `fa_category` [ RunTime:0.001765s ]
+[ sql ] [ SQL ] SELECT `diyname`,`name` FROM `fa_category` [ RunTime:0.000523s ]
+[ sql ] [ SQL ] SELECT `diyname`,`name` FROM `fa_category` [ RunTime:0.000581s ]
+[ sql ] [ SQL ] SELECT `diyname`,`name` FROM `fa_category` [ RunTime:0.000313s ]
+[ sql ] [ SQL ] SELECT `diyname`,`name` FROM `fa_category` [ RunTime:0.000242s ]
+[ sql ] [ SQL ] SELECT `diyname`,`name` FROM `fa_category` [ RunTime:0.000199s ]
+[ sql ] [ SQL ] SELECT `diyname`,`name` FROM `fa_category` [ RunTime:0.000316s ]
+[ sql ] [ SQL ] SELECT `diyname`,`name` FROM `fa_category` [ RunTime:0.000344s ]
+---------------------------------------------------------------
+[ 2018-03-27T17:57:54+08:00 ] 127.0.0.1 POST /api/index/total.html
+[ info ] mtapp.cc/api/index/total.html [运行时间：0.105551s][吞吐率：9.47req/s] [内存消耗：2,840.24kb] [文件加载：76]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000019s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.002588s ]
+[ info ] [ LANG ] E:\app_mt\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'index',
+    2 => 'total',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'mtapp.cc',
+  'connection' => 'keep-alive',
+  'content-length' => '59',
+  'accept' => '*/*',
+  'origin' => 'null',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8,en-US;q=0.6,en;q=0.4',
+)
+[ info ] [ PARAM ] array (
+  'type' => 'shares',
+  'my' => '0',
+  'token' => 'c700a2af-2185-4afc-b538-15b94de9709d',
+)
+[ info ] [ LANG ] E:\app_mt\public/../application/api\lang\zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.000319s ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\api\controller\Index->total[ E:\app_mt\application\api\controller\Index.php ]
+[ info ] [ BEHAVIOR ] Run app\api\behavior\Corss @response_send [ RunTime:0.000378s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010423s ] mysql:host=127.0.0.1;dbname=test;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_user_token` [ RunTime:0.020628s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_user_token` WHERE  `token` = 'c700a2af-2185-4afc-b538-15b94de9709d' LIMIT 1 [ RunTime:0.000460s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_user` [ RunTime:0.015335s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_user` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.000534s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_category` [ RunTime:0.015905s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `fa_category` WHERE  `type` = 'shares' LIMIT 1 [ RunTime:0.000358s ]
+---------------------------------------------------------------
+[ 2018-03-27T17:57:54+08:00 ] 127.0.0.1 POST /api/index/index.html
+[ info ] mtapp.cc/api/index/index.html [运行时间：0.143520s][吞吐率：6.97req/s] [内存消耗：2,979.56kb] [文件加载：83]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000018s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.002277s ]
+[ info ] [ LANG ] E:\app_mt\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'mtapp.cc',
+  'connection' => 'keep-alive',
+  'content-length' => '66',
+  'accept' => '*/*',
+  'origin' => 'null',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8,en-US;q=0.6,en;q=0.4',
+)
+[ info ] [ PARAM ] array (
+  'type' => 'shares',
+  'page' => '1',
+  'my' => '0',
+  'token' => 'c700a2af-2185-4afc-b538-15b94de9709d',
+)
+[ info ] [ LANG ] E:\app_mt\public/../application/api\lang\zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.000739s ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\api\controller\Index->index[ E:\app_mt\application\api\controller\Index.php ]
+[ info ] [ BEHAVIOR ] Run app\api\behavior\Corss @response_send [ RunTime:0.000208s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010246s ] mysql:host=127.0.0.1;dbname=test;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_user_token` [ RunTime:0.016892s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_user_token` WHERE  `token` = 'c700a2af-2185-4afc-b538-15b94de9709d' LIMIT 1 [ RunTime:0.000448s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_user` [ RunTime:0.017838s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_user` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.000570s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_shares` [ RunTime:0.017600s ]
+[ sql ] [ SQL ] SELECT `Shares`.* FROM `fa_shares` `Shares` INNER JOIN `fa_category` `Category` ON `Shares`.`cid`=`Category`.`id` WHERE  `Category`.`type` = 'shares'  AND `date` <= '2018-03-27' GROUP BY `cid` ORDER BY `date`  desc LIMIT 0,10 [ RunTime:0.000571s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_shares_detail` [ RunTime:0.018624s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_shares_detail` WHERE  `id` IN (2) [ RunTime:0.000425s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_category` [ RunTime:0.016470s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_category` WHERE  `id` IN (1) [ RunTime:0.000471s ]
+---------------------------------------------------------------
+[ 2018-03-27T17:57:54+08:00 ] 127.0.0.1 GET /
+[ info ] mtapp.cc/ [运行时间：0.036745s][吞吐率：27.21req/s] [内存消耗：2,388.12kb] [文件加载：69]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000024s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.002356s ]
+[ info ] [ LANG ] E:\app_mt\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'mtapp.cc',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36',
+  'accept' => 'image/webp,image/*,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8,en-US;q=0.6,en;q=0.4',
+  'cookie' => 'Hm_lvt_f8d0a8c400404989e195270b0bbf060a=1521857158,1522029259',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] E:\app_mt\public/../application/index\lang\zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.000332s ]
+[ info ] [ LANG ] E:\app_mt\public/../application/index/lang/zh-cn/index.php
+[ info ] [ RUN ] app\index\controller\Index->index[ E:\app_mt\application\index\controller\Index.php ]
+[ info ] [ VIEW ] E:\app_mt\public/../application/index\view\index\index.html [ array (
+  0 => 'user',
+  1 => 'site',
+  2 => 'config',
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-03-27T17:59:04+08:00 ] 127.0.0.1 POST /api/index/total.html
+[ info ] mtapp.cc/api/index/total.html [运行时间：0.152244s][吞吐率：6.57req/s] [内存消耗：2,840.24kb] [文件加载：76]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000024s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.006406s ]
+[ info ] [ LANG ] E:\app_mt\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'index',
+    2 => 'total',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'mtapp.cc',
+  'connection' => 'keep-alive',
+  'content-length' => '59',
+  'accept' => '*/*',
+  'origin' => 'null',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8,en-US;q=0.6,en;q=0.4',
+)
+[ info ] [ PARAM ] array (
+  'type' => 'shares',
+  'my' => '0',
+  'token' => 'c700a2af-2185-4afc-b538-15b94de9709d',
+)
+[ info ] [ LANG ] E:\app_mt\public/../application/api\lang\zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.000795s ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\api\controller\Index->total[ E:\app_mt\application\api\controller\Index.php ]
+[ info ] [ BEHAVIOR ] Run app\api\behavior\Corss @response_send [ RunTime:0.000749s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000944s ] mysql:host=127.0.0.1;dbname=test;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_user_token` [ RunTime:0.024414s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_user_token` WHERE  `token` = 'c700a2af-2185-4afc-b538-15b94de9709d' LIMIT 1 [ RunTime:0.000458s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_user` [ RunTime:0.026979s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_user` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.000426s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_category` [ RunTime:0.021026s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `fa_category` WHERE  `type` = 'shares' LIMIT 1 [ RunTime:0.000603s ]
+---------------------------------------------------------------
+[ 2018-03-27T17:59:04+08:00 ] 127.0.0.1 POST /api/index/index.html
+[ info ] mtapp.cc/api/index/index.html [运行时间：0.170797s][吞吐率：5.85req/s] [内存消耗：2,979.56kb] [文件加载：83]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000028s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.004989s ]
+[ info ] [ LANG ] E:\app_mt\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'mtapp.cc',
+  'connection' => 'keep-alive',
+  'content-length' => '66',
+  'accept' => '*/*',
+  'origin' => 'null',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8,en-US;q=0.6,en;q=0.4',
+)
+[ info ] [ PARAM ] array (
+  'type' => 'shares',
+  'page' => '1',
+  'my' => '0',
+  'token' => 'c700a2af-2185-4afc-b538-15b94de9709d',
+)
+[ info ] [ LANG ] E:\app_mt\public/../application/api\lang\zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.000411s ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\api\controller\Index->index[ E:\app_mt\application\api\controller\Index.php ]
+[ info ] [ BEHAVIOR ] Run app\api\behavior\Corss @response_send [ RunTime:0.000197s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003536s ] mysql:host=127.0.0.1;dbname=test;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_user_token` [ RunTime:0.032171s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_user_token` WHERE  `token` = 'c700a2af-2185-4afc-b538-15b94de9709d' LIMIT 1 [ RunTime:0.000513s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_user` [ RunTime:0.022925s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_user` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.000769s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_shares` [ RunTime:0.017945s ]
+[ sql ] [ SQL ] SELECT `Shares`.* FROM `fa_shares` `Shares` INNER JOIN `fa_category` `Category` ON `Shares`.`cid`=`Category`.`id` WHERE  `Category`.`type` = 'shares'  AND `date` <= '2018-03-27' GROUP BY `cid` ORDER BY `date`  desc LIMIT 0,10 [ RunTime:0.000477s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_shares_detail` [ RunTime:0.016177s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_shares_detail` WHERE  `id` IN (2) [ RunTime:0.000274s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_category` [ RunTime:0.016073s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_category` WHERE  `id` IN (1) [ RunTime:0.000261s ]
+---------------------------------------------------------------
+[ 2018-03-27T17:59:04+08:00 ] 127.0.0.1 GET /
+[ info ] mtapp.cc/ [运行时间：0.065320s][吞吐率：15.31req/s] [内存消耗：2,388.12kb] [文件加载：69]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000023s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.004145s ]
+[ info ] [ LANG ] E:\app_mt\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'mtapp.cc',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36',
+  'accept' => 'image/webp,image/*,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8,en-US;q=0.6,en;q=0.4',
+  'cookie' => 'Hm_lvt_f8d0a8c400404989e195270b0bbf060a=1521857158,1522029259',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] E:\app_mt\public/../application/index\lang\zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.000800s ]
+[ info ] [ LANG ] E:\app_mt\public/../application/index/lang/zh-cn/index.php
+[ info ] [ RUN ] app\index\controller\Index->index[ E:\app_mt\application\index\controller\Index.php ]
+[ info ] [ VIEW ] E:\app_mt\public/../application/index\view\index\index.html [ array (
+  0 => 'user',
+  1 => 'site',
+  2 => 'config',
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-03-27T18:00:01+08:00 ] 127.0.0.1 POST /api/index/total.html
+[ info ] mtapp.cc/api/index/total.html [运行时间：0.122373s][吞吐率：8.17req/s] [内存消耗：2,840.25kb] [文件加载：76]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000228s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.004691s ]
+[ info ] [ LANG ] E:\app_mt\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'index',
+    2 => 'total',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'mtapp.cc',
+  'connection' => 'keep-alive',
+  'content-length' => '61',
+  'accept' => '*/*',
+  'origin' => 'null',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8,en-US;q=0.6,en;q=0.4',
+)
+[ info ] [ PARAM ] array (
+  'type' => 'exchange',
+  'my' => '0',
+  'token' => 'c700a2af-2185-4afc-b538-15b94de9709d',
+)
+[ info ] [ LANG ] E:\app_mt\public/../application/api\lang\zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.000329s ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\api\controller\Index->total[ E:\app_mt\application\api\controller\Index.php ]
+[ info ] [ BEHAVIOR ] Run app\api\behavior\Corss @response_send [ RunTime:0.000521s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001187s ] mysql:host=127.0.0.1;dbname=test;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_user_token` [ RunTime:0.018366s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_user_token` WHERE  `token` = 'c700a2af-2185-4afc-b538-15b94de9709d' LIMIT 1 [ RunTime:0.000526s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_user` [ RunTime:0.018364s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_user` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.000460s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_category` [ RunTime:0.015950s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `fa_category` WHERE  `type` = 'exchange' LIMIT 1 [ RunTime:0.000594s ]
+---------------------------------------------------------------
+[ 2018-03-27T18:00:01+08:00 ] 127.0.0.1 POST /api/index/index.html
+[ info ] mtapp.cc/api/index/index.html [运行时间：0.145627s][吞吐率：6.87req/s] [内存消耗：2,979.57kb] [文件加载：83]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000041s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.002889s ]
+[ info ] [ LANG ] E:\app_mt\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'mtapp.cc',
+  'connection' => 'keep-alive',
+  'content-length' => '68',
+  'accept' => '*/*',
+  'origin' => 'null',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8,en-US;q=0.6,en;q=0.4',
+)
+[ info ] [ PARAM ] array (
+  'type' => 'exchange',
+  'page' => '1',
+  'my' => '0',
+  'token' => 'c700a2af-2185-4afc-b538-15b94de9709d',
+)
+[ info ] [ LANG ] E:\app_mt\public/../application/api\lang\zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.001055s ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\api\controller\Index->index[ E:\app_mt\application\api\controller\Index.php ]
+[ info ] [ BEHAVIOR ] Run app\api\behavior\Corss @response_send [ RunTime:0.000202s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000876s ] mysql:host=127.0.0.1;dbname=test;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_user_token` [ RunTime:0.015459s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_user_token` WHERE  `token` = 'c700a2af-2185-4afc-b538-15b94de9709d' LIMIT 1 [ RunTime:0.000308s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_user` [ RunTime:0.015057s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_user` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.000703s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_shares` [ RunTime:0.017639s ]
+[ sql ] [ SQL ] SELECT `Shares`.* FROM `fa_shares` `Shares` INNER JOIN `fa_category` `Category` ON `Shares`.`cid`=`Category`.`id` WHERE  `Category`.`type` = 'exchange'  AND `date` <= '2018-03-27' GROUP BY `cid` ORDER BY `date`  desc LIMIT 0,10 [ RunTime:0.000465s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_shares_detail` [ RunTime:0.023879s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_shares_detail` WHERE  `id` IN (25) [ RunTime:0.001030s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_category` [ RunTime:0.016734s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_category` WHERE  `id` IN (3) [ RunTime:0.000576s ]
+---------------------------------------------------------------
+[ 2018-03-27T18:00:01+08:00 ] 127.0.0.1 GET /
+[ info ] mtapp.cc/ [运行时间：0.059385s][吞吐率：16.84req/s] [内存消耗：2,388.12kb] [文件加载：69]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000024s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.004904s ]
+[ info ] [ LANG ] E:\app_mt\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'mtapp.cc',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36',
+  'accept' => 'image/webp,image/*,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8,en-US;q=0.6,en;q=0.4',
+  'cookie' => 'Hm_lvt_f8d0a8c400404989e195270b0bbf060a=1521857158,1522029259',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] E:\app_mt\public/../application/index\lang\zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.001709s ]
+[ info ] [ LANG ] E:\app_mt\public/../application/index/lang/zh-cn/index.php
+[ info ] [ RUN ] app\index\controller\Index->index[ E:\app_mt\application\index\controller\Index.php ]
+[ info ] [ VIEW ] E:\app_mt\public/../application/index\view\index\index.html [ array (
+  0 => 'user',
+  1 => 'site',
+  2 => 'config',
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-03-27T18:00:03+08:00 ] 127.0.0.1 POST /api/show_k/index.html
+[ info ] mtapp.cc/api/show_k/index.html [运行时间：0.202834s][吞吐率：4.93req/s] [内存消耗：2,966.96kb] [文件加载：81]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000023s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.002579s ]
+[ info ] [ LANG ] E:\app_mt\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'show_k',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'mtapp.cc',
+  'connection' => 'keep-alive',
+  'content-length' => '54',
+  'accept' => '*/*',
+  'origin' => 'null',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8,en-US;q=0.6,en;q=0.4',
+)
+[ info ] [ PARAM ] array (
+  'code' => '000003',
+  'token' => 'c700a2af-2185-4afc-b538-15b94de9709d',
+)
+[ info ] [ LANG ] E:\app_mt\public/../application/api\lang\zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.000378s ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\api\controller\ShowK->index[ E:\app_mt\application\api\controller\ShowK.php ]
+[ info ] [ BEHAVIOR ] Run app\api\behavior\Corss @response_send [ RunTime:0.000288s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003874s ] mysql:host=127.0.0.1;dbname=test;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_user_token` [ RunTime:0.061866s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_user_token` WHERE  `token` = 'c700a2af-2185-4afc-b538-15b94de9709d' LIMIT 1 [ RunTime:0.000638s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_user` [ RunTime:0.032961s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_user` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.000403s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_shares` [ RunTime:0.018648s ]
+[ sql ] [ SQL ] SELECT `Shares`.* FROM `fa_shares` `Shares` INNER JOIN `fa_category` `Category` ON `Shares`.`cid`=`Category`.`id` WHERE  `Category`.`diyname` = '000003'  AND `date` = '2018-03-27' LIMIT 1 [ RunTime:0.000351s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_shares_detail` [ RunTime:0.017861s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_shares_detail` WHERE  `id` = 310 LIMIT 1 [ RunTime:0.000293s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_category` [ RunTime:0.017152s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_category` WHERE  `id` = 3 LIMIT 1 [ RunTime:0.000304s ]
+---------------------------------------------------------------
+[ 2018-03-27T18:01:12+08:00 ] 127.0.0.1 POST /api/show_k/index.html
+[ info ] mtapp.cc/api/show_k/index.html [运行时间：0.171266s][吞吐率：5.84req/s] [内存消耗：2,967.55kb] [文件加载：81]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000041s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.006273s ]
+[ info ] [ LANG ] E:\app_mt\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'show_k',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'mtapp.cc',
+  'connection' => 'keep-alive',
+  'content-length' => '54',
+  'accept' => '*/*',
+  'origin' => 'null',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8,en-US;q=0.6,en;q=0.4',
+)
+[ info ] [ PARAM ] array (
+  'code' => '000003',
+  'token' => 'c700a2af-2185-4afc-b538-15b94de9709d',
+)
+[ info ] [ LANG ] E:\app_mt\public/../application/api\lang\zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.001225s ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\api\controller\ShowK->index[ E:\app_mt\application\api\controller\ShowK.php ]
+[ info ] [ BEHAVIOR ] Run app\api\behavior\Corss @response_send [ RunTime:0.000208s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001546s ] mysql:host=127.0.0.1;dbname=test;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_user_token` [ RunTime:0.023439s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_user_token` WHERE  `token` = 'c700a2af-2185-4afc-b538-15b94de9709d' LIMIT 1 [ RunTime:0.000315s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_user` [ RunTime:0.017651s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_user` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.000401s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_shares` [ RunTime:0.016677s ]
+[ sql ] [ SQL ] SELECT `Shares`.* FROM `fa_shares` `Shares` INNER JOIN `fa_category` `Category` ON `Shares`.`cid`=`Category`.`id` WHERE  `Category`.`diyname` = '000003'  AND `date` = '2018-03-27' LIMIT 1 [ RunTime:0.000331s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_shares_detail` [ RunTime:0.016778s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_shares_detail` WHERE  `id` = 310 LIMIT 1 [ RunTime:0.000267s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_category` [ RunTime:0.015883s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_category` WHERE  `id` = 3 LIMIT 1 [ RunTime:0.000281s ]
+---------------------------------------------------------------
+[ 2018-03-27T18:01:21+08:00 ] 127.0.0.1 POST /api/show_k/index.html
+[ info ] mtapp.cc/api/show_k/index.html [运行时间：0.167019s][吞吐率：5.99req/s] [内存消耗：2,967.55kb] [文件加载：81]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000028s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.002931s ]
+[ info ] [ LANG ] E:\app_mt\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'show_k',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'mtapp.cc',
+  'connection' => 'keep-alive',
+  'content-length' => '54',
+  'accept' => '*/*',
+  'origin' => 'null',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8,en-US;q=0.6,en;q=0.4',
+)
+[ info ] [ PARAM ] array (
+  'code' => '000003',
+  'token' => 'c700a2af-2185-4afc-b538-15b94de9709d',
+)
+[ info ] [ LANG ] E:\app_mt\public/../application/api\lang\zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.000385s ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\api\controller\ShowK->index[ E:\app_mt\application\api\controller\ShowK.php ]
+[ info ] [ BEHAVIOR ] Run app\api\behavior\Corss @response_send [ RunTime:0.000210s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000898s ] mysql:host=127.0.0.1;dbname=test;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_user_token` [ RunTime:0.031737s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_user_token` WHERE  `token` = 'c700a2af-2185-4afc-b538-15b94de9709d' LIMIT 1 [ RunTime:0.000876s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_user` [ RunTime:0.026229s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_user` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.000532s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_shares` [ RunTime:0.019016s ]
+[ sql ] [ SQL ] SELECT `Shares`.* FROM `fa_shares` `Shares` INNER JOIN `fa_category` `Category` ON `Shares`.`cid`=`Category`.`id` WHERE  `Category`.`diyname` = '000003'  AND `date` = '2018-03-27' LIMIT 1 [ RunTime:0.000359s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_shares_detail` [ RunTime:0.020842s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_shares_detail` WHERE  `id` = 310 LIMIT 1 [ RunTime:0.000503s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_category` [ RunTime:0.018560s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_category` WHERE  `id` = 3 LIMIT 1 [ RunTime:0.000372s ]
+---------------------------------------------------------------
+[ 2018-03-27T18:01:26+08:00 ] 127.0.0.1 POST /api/show_k/index.html
+[ info ] mtapp.cc/api/show_k/index.html [运行时间：0.186316s][吞吐率：5.37req/s] [内存消耗：2,967.55kb] [文件加载：81]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000027s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.002719s ]
+[ info ] [ LANG ] E:\app_mt\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'show_k',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'mtapp.cc',
+  'connection' => 'keep-alive',
+  'content-length' => '54',
+  'accept' => '*/*',
+  'origin' => 'null',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8,en-US;q=0.6,en;q=0.4',
+)
+[ info ] [ PARAM ] array (
+  'code' => '000003',
+  'token' => 'c700a2af-2185-4afc-b538-15b94de9709d',
+)
+[ info ] [ LANG ] E:\app_mt\public/../application/api\lang\zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.000382s ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\api\controller\ShowK->index[ E:\app_mt\application\api\controller\ShowK.php ]
+[ info ] [ BEHAVIOR ] Run app\api\behavior\Corss @response_send [ RunTime:0.000275s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001025s ] mysql:host=127.0.0.1;dbname=test;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_user_token` [ RunTime:0.040959s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_user_token` WHERE  `token` = 'c700a2af-2185-4afc-b538-15b94de9709d' LIMIT 1 [ RunTime:0.001116s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_user` [ RunTime:0.022187s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_user` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.000854s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_shares` [ RunTime:0.021209s ]
+[ sql ] [ SQL ] SELECT `Shares`.* FROM `fa_shares` `Shares` INNER JOIN `fa_category` `Category` ON `Shares`.`cid`=`Category`.`id` WHERE  `Category`.`diyname` = '000003'  AND `date` = '2018-03-27' LIMIT 1 [ RunTime:0.000596s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_shares_detail` [ RunTime:0.024722s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_shares_detail` WHERE  `id` = 310 LIMIT 1 [ RunTime:0.000397s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_category` [ RunTime:0.029199s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_category` WHERE  `id` = 3 LIMIT 1 [ RunTime:0.000360s ]

@@ -32,12 +32,16 @@ class Index extends Api
 
        $hasWhere=['type'=>$type];
         if(!empty($my)){
+            $userInfo=$this->auth->getUser();
+            if(empty($userInfo)){
+                return $this->success('',[]);
+            }
             $owner=unserialize($this->auth->owner);
             $ids=array_keys($owner);
-            $hasWhere['diyname']=['in',$ids];
+            $hasWhere['category.diyname']=['in',$ids];
         }
-       $shares=Shares::hasWhere('category',$hasWhere)
-            ->where(['date'=>['<=',$date]])
+       $shares=Shares::where(['date'=>['<=',$date]])
+           ->where($hasWhere)
            ->page($page,10)
            ->order(['date'=>'desc'])
            ->with('detail,category')
@@ -62,6 +66,10 @@ class Index extends Api
         $my=input('my',0);
         $count=Category::where(['type'=>$type]);
         if($my){
+            $userInfo=$this->auth->getUser();
+            if(empty($userInfo)){
+                return $this->success('',['count'=>0]);
+            }
             $owner=unserialize($this->auth->owner);
             $ids=array_keys($owner);
             $count->where(['diyname'=>['in',$ids]]);

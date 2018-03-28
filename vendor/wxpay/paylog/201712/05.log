@@ -1,0 +1,48 @@
+---------------------------------------------------------------
+[ 2017-12-05T13:33:15+08:00 ] 127.0.0.1 127.0.0.1 GET /index/pay_jd/test1
+[ info ] m.wap.cc/index/pay_jd/test1 [运行时间：0.336423s][吞吐率：2.97req/s] [内存消耗：2,220.60kb] [文件加载：57]
+[ info ] [ LANG ] C:\code\wap.tar\wap\wap\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'pay_jd',
+    2 => 'test1',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'm.wap.cc',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8,en-US;q=0.6,en;q=0.4',
+  'cookie' => 'PHPSESSID=5vdfig1g31i155pvlqadbf98ro',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\index\controller\PayJd->test1[ C:\code\wap.tar\wap\wap\home\index\controller\PayJd.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ CACHE ] INIT File
+[ info ] [ LOG ] INIT File
+[ error ] [8]未定义数组下标: 1[C:\code\wap.tar\wap\wap\thinkphp\library\think\Route.php:215]
+[ error ] [8]未定义数组索引: HTTP_REFERER[C:\code\wap.tar\wap\wap\home\index\controller\Common.php:14]
+[ error ] [8192]Function mcrypt_module_open() is deprecated[C:\code\wap.tar\wap\wap\vendor\jdpay\common\TDESUtil.php:121]
+[ error ] [8192]Function mcrypt_enc_get_iv_size() is deprecated[C:\code\wap.tar\wap\wap\vendor\jdpay\common\TDESUtil.php:122]
+[ error ] [8192]Function mcrypt_create_iv() is deprecated[C:\code\wap.tar\wap\wap\vendor\jdpay\common\TDESUtil.php:122]
+[ error ] [8192]Function mcrypt_enc_get_key_size() is deprecated[C:\code\wap.tar\wap\wap\vendor\jdpay\common\TDESUtil.php:123]
+[ error ] [8192]Function mcrypt_generic_init() is deprecated[C:\code\wap.tar\wap\wap\vendor\jdpay\common\TDESUtil.php:124]
+[ error ] [8192]Function mdecrypt_generic() is deprecated[C:\code\wap.tar\wap\wap\vendor\jdpay\common\TDESUtil.php:125]
+[ error ] [8192]Function mcrypt_generic_deinit() is deprecated[C:\code\wap.tar\wap\wap\vendor\jdpay\common\TDESUtil.php:126]
+[ error ] [8192]Function mcrypt_module_close() is deprecated[C:\code\wap.tar\wap\wap\vendor\jdpay\common\TDESUtil.php:127]
+[ log ] {"version":"V2.0","merchant":"22294531","result":{"code":"000000","desc":"success"},"device":"111","tradeNum":"2017120512313119332","tradeType":"0","sign":"Kh01B\/7muSSqCzUliuILSjqXeBXqqYWtRmhmq9nCSZ9Cs+Tu3VRsFEn3kGI8Oml2g08wIuHxgBaje6hGw5HZeUVgwqrFtXr1Y\/G0soCqF2wFm4QCyMq4USk7VK4QMf+iwv2bUw\/9CWw2ipkUiGgsdTtUcfwfz5FwS8IVPNfiYNU=","amount":"1","status":"2","payList":{"pay":{"payType":"2","amount":"1","currency":"CNY","tradeTime":"20171205123155"}}}
