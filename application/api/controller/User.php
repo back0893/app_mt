@@ -424,4 +424,23 @@ class User extends Api
         $free=$userInfo->money;
         return $this->success('',['free'=>$free]);
     }
+
+    /**
+     * 绑定支付宝
+     */
+    public function bindAli(){
+        $user=$this->auth->getUser();
+        $model=new Bank();
+        $b=$model->where(['uid'=>$user->id])->find();
+        $data=['uid'=>$user->id,'name'=>input('name')];
+        if(empty($b)){
+            $model->allowField(true)
+                ->isUpdate(false)
+                ->save($data);
+        }else{
+            $b->name=input('name');
+            $b->save();
+        }
+        return $this->success('修改成功');
+    }
 }
