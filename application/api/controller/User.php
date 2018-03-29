@@ -424,7 +424,8 @@ class User extends Api
         $user=$this->auth->getUser();
         $data=[
             'name'=>input('name','','trim'),
-            'payee_account'=>input('payee_account','','trim')
+            'payee_account'=>input('payee_account','','trim'),
+            'uid'=>$user->id
         ];
         $validate=new \app\api\validate\Bank();
         $validate->scene('ali');

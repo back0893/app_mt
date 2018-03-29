@@ -30,6 +30,9 @@ class Outting extends Api
             return Response::error('金额不足');
         }
         $bind=Bank::where(['uid'=>$user->id])->find();
+        if(empty($bind)){
+            return $this->error('请先绑定支付宝');
+        }
         $data['uid']=$user->id;
         $data['payed']=0;
         $data['charge']=0;
@@ -42,7 +45,7 @@ class Outting extends Api
         $transfer=new TransferAli();
         $r=$transfer->transfer($data);
         if($r===false){
-            return Response::error('提款失败');
+            return Response::error('提款失败,确保帐号正确');
         }
         return Response::success('提款成功,请等待到账');
     }
