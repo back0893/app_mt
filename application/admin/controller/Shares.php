@@ -23,7 +23,6 @@ class Shares extends Backend
     {
         parent::_initialize();
         $this->model = model('app\common\model\Shares');
-
     }
     
     /**
@@ -31,6 +30,8 @@ class Shares extends Backend
      * 因此在当前控制器中可不用编写增删改查的代码,除非需要自己控制这部分逻辑
      * 需要将application/admin/library/traits/Backend.php中对应的方法复制到当前控制器,然后进行修改
      */
+
+
     public function index()
     {
         //设置过滤方法
@@ -58,11 +59,11 @@ class Shares extends Backend
             $total = $this->model
                 ->with("category")
                 ->where($where)
-                ->order('date','desc')
                 ->count();
             $list = $this->model
                 ->with("category")
                 ->where($where)
+                ->order('date','desc')
                 ->limit($offset,$limit)
                 ->select();
             if(!empty($list)){
@@ -117,6 +118,9 @@ class Shares extends Backend
         $now=new \DateTime('+1 day');
         $now_share=\app\common\model\Shares::where(['cid'=>$id,'date'=>date('Y-m-d')])
             ->find();
+        if(empty($now_share)){
+           return $this->error('请先去生成今天走势');
+        }
         $now_share->makeDetail();
         $interval=new \DateInterval('P1D');
         $daterange=new \DatePeriod($now,$interval,10);

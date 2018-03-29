@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:59:"E:\app_mt\public/../application/admin\view\shares\edit.html";i:1522027161;s:52:"E:\app_mt\application\admin\view\layout\default.html";i:1521100758;s:49:"E:\app_mt\application\admin\view\common\meta.html";i:1521100758;s:51:"E:\app_mt\application\admin\view\common\script.html";i:1521100758;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:59:"E:\app_mt\public/../application/admin\view\shares\edit.html";i:1522297228;s:52:"E:\app_mt\application\admin\view\layout\default.html";i:1521100758;s:49:"E:\app_mt\application\admin\view\common\meta.html";i:1521100758;s:51:"E:\app_mt\application\admin\view\common\script.html";i:1521100758;}*/ ?>
 <!DOCTYPE html>
 <html lang="<?php echo $config['language']; ?>">
     <head>
@@ -55,7 +55,7 @@
     <div class="form-group">
         <label for="c-code" class="control-label col-xs-12 col-sm-2"><?php echo __('Code'); ?>:</label>
         <div class="col-xs-12 col-sm-8">
-            <input id="c-code" data-rule="required" data-multiple="false" data-source="category/selectpage" class="form-control selectpage" name="row[cid]" type="text" value="<?php echo $row['code']; ?>">
+            <input id="c-code" data-rule="required" data-multiple="false" data-source="category/selectpage" class="form-control selectpage" name="row[cid]" type="text" value="<?php echo $row['category']['diyname']; ?>">
         </div>
     </div>
     <div class="form-group">
@@ -73,19 +73,19 @@
     <div class="form-group">
         <label for="c-end_price" class="control-label col-xs-12 col-sm-2">收盘价格:</label>
         <div class="col-xs-12 col-sm-8">
-            <input id="c-end_price" data-rule="required" class="form-control" step="0.01" name="row[endprice]" type="number" value="<?php echo $row['end_price']; ?>">
+            <input id="c-end_price" data-rule="required" class="form-control" step="0.01" name="row[endprice]" type="number" value="<?php echo $row['endprice']; ?>">
         </div>
     </div>
     <div class="form-group">
         <label for="c-maxPrice" class="control-label col-xs-12 col-sm-2"><?php echo __('Maxprice'); ?>:</label>
         <div class="col-xs-12 col-sm-8">
-            <input id="c-maxPrice" data-rule="required" class="form-control" step="0.01" name="row[maxPrice]" type="number" value="<?php echo $row['maxPrice']; ?>">
+            <input id="c-maxPrice" data-rule="required" class="form-control" step="0.01" name="row[maxprice]" type="number" value="<?php echo $row['maxprice']; ?>">
         </div>
     </div>
     <div class="form-group">
         <label for="c-minPrice" class="control-label col-xs-12 col-sm-2"><?php echo __('Minprice'); ?>:</label>
         <div class="col-xs-12 col-sm-8">
-            <input id="c-minPrice" data-rule="required" class="form-control" step="0.01" name="row[minPrice]" type="number" value="<?php echo $row['minPrice']; ?>">
+            <input id="c-minPrice" data-rule="required" class="form-control" step="0.01" name="row[minprice]" type="number" value="<?php echo $row['minprice']; ?>">
         </div>
     </div>
     <div class="form-group layer-footer">

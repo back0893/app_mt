@@ -116,11 +116,11 @@ class User extends Api
      */
     public function register()
     {
-        $username = $this->request->request('username');
-        $password = $this->request->request('password');
-        $email = $this->request->request('email');
-        $mobile = $this->request->request('mobile');
-        if (!$username || !$password)
+        $username = $this->request->request('username','','trim');
+        $password = $this->request->request('pass','','trim');
+        $repassword=$this->request->request('repass','','trim');
+        $email = $this->request->request('email','','trim');
+        if (!$username || !$password || $password!==$repassword)
         {
             $this->error(__('Invalid parameters'));
         }
@@ -128,11 +128,7 @@ class User extends Api
         {
             $this->error(__('Email is incorrect'));
         }
-        if ($mobile && !Validate::regex($mobile, "^1\d{10}$"))
-        {
-            $this->error(__('Mobile is incorrect'));
-        }
-        $ret = $this->auth->register($username, $password, $email, $mobile, []);
+        $ret = $this->auth->register($username, $password, $email);
         if ($ret)
         {
             $data = ['userinfo' => $this->auth->getUserinfo()];

@@ -114,11 +114,11 @@ class Trade extends Api
                 'status'=>2,
                 'code'=>$code,
                 'uid'=>$user->id,
+                'createtime'=>time()
             ];
             Db::startTrans();
             try{
                 $r1=$tradeModel->allowField(true)
-                    ->isUpdate(false)
                     ->save($data);
                 $r2=$user->isUpdate(true)
                     ->save();

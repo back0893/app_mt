@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:6:{s:59:"E:\app_mt\public/../application/admin\view\index\index.html";i:1521100758;s:49:"E:\app_mt\application\admin\view\common\meta.html";i:1521100758;s:51:"E:\app_mt\application\admin\view\common\header.html";i:1521100758;s:49:"E:\app_mt\application\admin\view\common\menu.html";i:1521100758;s:52:"E:\app_mt\application\admin\view\common\control.html";i:1521100758;s:51:"E:\app_mt\application\admin\view\common\script.html";i:1521100758;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:6:{s:59:"E:\app_mt\public/../application/admin\view\index\index.html";i:1521100758;s:49:"E:\app_mt\application\admin\view\common\meta.html";i:1521100758;s:51:"E:\app_mt\application\admin\view\common\header.html";i:1521100758;s:49:"E:\app_mt\application\admin\view\common\menu.html";i:1522306773;s:52:"E:\app_mt\application\admin\view\common\control.html";i:1521100758;s:51:"E:\app_mt\application\admin\view\common\script.html";i:1521100758;}*/ ?>
 <!DOCTYPE html>
 <html lang="<?php echo $config['language']; ?>">
     <head>
@@ -180,10 +180,10 @@
     <!--如果想始终显示子菜单,则给ul加上show-submenu类即可-->
     <ul class="sidebar-menu">
         <?php echo $menulist; ?>
-        <li class="header" data-rel="external"><?php echo __('Links'); ?></li>
-        <li data-rel="external"><a href="http://doc.fastadmin.net" target="_blank"><i class="fa fa-list text-red"></i> <span><?php echo __('Docs'); ?></span></a></li>
-        <li data-rel="external"><a href="http://forum.fastadmin.net" target="_blank"><i class="fa fa-comment text-yellow"></i> <span><?php echo __('Forum'); ?></span></a></li>
-        <li data-rel="external"><a href="https://jq.qq.com/?_wv=1027&k=487PNBb" target="_blank"><i class="fa fa-qq text-aqua"></i> <span><?php echo __('QQ qun'); ?></span></a></li>
+        <!--<li class="header" data-rel="external"><?php echo __('Links'); ?></li>-->
+        <!--<li data-rel="external"><a href="http://doc.fastadmin.net" target="_blank"><i class="fa fa-list text-red"></i> <span><?php echo __('Docs'); ?></span></a></li>-->
+        <!--<li data-rel="external"><a href="http://forum.fastadmin.net" target="_blank"><i class="fa fa-comment text-yellow"></i> <span><?php echo __('Forum'); ?></span></a></li>-->
+        <!--<li data-rel="external"><a href="https://jq.qq.com/?_wv=1027&k=487PNBb" target="_blank"><i class="fa fa-qq text-aqua"></i> <span><?php echo __('QQ qun'); ?></span></a></li>-->
     </ul>
 </section>
 <!-- /.sidebar -->

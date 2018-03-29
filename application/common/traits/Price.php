@@ -32,7 +32,7 @@ trait Price
         return $this->getPrice($value);
     }
     protected function setOpenPriceAttr($value){
-        return $this->getPrice($value);
+        return $this->setPrice($value);
     }
     protected function getEndpriceAttr($value){
         return $this->getPrice($value);
