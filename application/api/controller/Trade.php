@@ -26,7 +26,7 @@ class Trade extends Api
     //买入
     public function buy(){
         $number=input('number',0,'intval');
-        $price=input('price',0,'intval');
+        $price=input('price',0,'floatval');
         $code=input('code',0,'trim');
         $category=Category::column('diyname');
         if(!in_array($code,$category)){
@@ -93,7 +93,7 @@ class Trade extends Api
         $product=$owner[$code];
         if($this->request->isPost()){
             $number=input('number',0,'intval');
-            $price=input('price',0,'intval');
+            $price=input('price',0,'floatval');
             if($number>$product['number']){
                 return Response::error('数量不足');
             }

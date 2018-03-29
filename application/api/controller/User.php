@@ -424,4 +424,28 @@ class User extends Api
         $free=$userInfo->money;
         return $this->success('',['free'=>$free]);
     }
+    public function bindAli(){
+        $user=$this->auth->getUser();
+        $data=[
+            'name'=>input('name','','trim'),
+            'payee_account'=>input('payee_account','','trim')
+        ];
+        $validate=new \app\api\validate\Bank();
+        $validate->scene('ali');
+        if(!$validate->check($data)){
+            return $this->error($validate->getError());
+        }
+        $model=new Bank();
+        $b=$model->where(['uid'=>$user->id])
+            ->find();
+        if(empty($b)){
+            $model->isUpdate(false)
+                ->allowField(true)
+                ->save($data);
+        }else{
+            $b->allowField(true)
+                ->save($data);
+        }
+        return $this->success('',$data);
+    }
 }

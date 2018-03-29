@@ -29,7 +29,6 @@ class Index extends Api
        }else{
            $date=date('Y-m-d');
        }
-
        $hasWhere=['type'=>$type];
         if(!empty($my)){
             $userInfo=$this->auth->getUser();
@@ -40,12 +39,10 @@ class Index extends Api
             $ids=array_keys($owner);
             $hasWhere['category.diyname']=['in',$ids];
         }
-       $shares=Shares::where(['date'=>['<=',$date]])
+       $shares=Shares::where(['date'=>$date])
            ->where($hasWhere)
            ->page($page,10)
-           ->order(['date'=>'desc'])
            ->with('detail,category')
-           ->group('cid')
            ->select();
        $flip=config('site.categorytype');
        $tmp=[];

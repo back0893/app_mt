@@ -47,6 +47,6 @@ class History extends Api
         $owner=unserialize($this->auth->owner);
         $owner=empty($owner)?[]:$owner;
         $page2=count($owner);
-        return $this->success('',['page1'=>$page1,'page2'=>$page1]);
+        return $this->success('',['page1'=>$page1,'page2'=>$page2]);
     }
 }
