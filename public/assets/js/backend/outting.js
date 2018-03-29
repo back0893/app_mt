@@ -25,11 +25,8 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                         {field: 'id', title: __('Id')},
                         {field: 'uid', title: __('Uid')},
                         {field: 'money', title: __('Money')},
-                        {field: 'orderId', title: __('Orderid')},
                         {field: 'tradeId', title: __('Tradeid')},
                         {field: 'name', title: __('Name')},
-                        {field: 'bank', title: __('Bank')},
-                        {field: 'bankName', title: __('Bankname')},
                         {field: 'date', title: __('Date')},
                         {field: 'payed', title: __('Payed')},
                         {field: 'charge', title: __('Charge')}

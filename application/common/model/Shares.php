@@ -16,9 +16,13 @@ class Shares extends Model
 {
     use Price;
     protected $name='shares';
-    public function getCurrentPriceAttr($value){
+    public function getCurrentPriceAttr(){
+        $date=$this->getData('date');
+        if($date<date('Y-m-d')){
+            return $this->getData('endprice');
+        }
         $data=$this->detail->getAttr('data');
-        $currentTime=date('md');
+        $currentTime=date('Hi');
         try{
             $c=$data[$currentTime];
         }catch (\Exception $e){

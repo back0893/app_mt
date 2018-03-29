@@ -116,11 +116,11 @@ class User extends Api
      */
     public function register()
     {
-        $username = $this->request->request('username');
-        $password = $this->request->request('password');
-        $email = $this->request->request('email');
-        $mobile = $this->request->request('mobile');
-        if (!$username || !$password)
+        $username = $this->request->request('username','','trim');
+        $password = $this->request->request('pass','','trim');
+        $repassword=$this->request->request('repass','','trim');
+        $email = $this->request->request('email','','trim');
+        if (!$username || !$password || $password!==$repassword)
         {
             $this->error(__('Invalid parameters'));
         }
@@ -128,11 +128,7 @@ class User extends Api
         {
             $this->error(__('Email is incorrect'));
         }
-        if ($mobile && !Validate::regex($mobile, "^1\d{10}$"))
-        {
-            $this->error(__('Mobile is incorrect'));
-        }
-        $ret = $this->auth->register($username, $password, $email, $mobile, []);
+        $ret = $this->auth->register($username, $password, $email);
         if ($ret)
         {
             $data = ['userinfo' => $this->auth->getUserinfo()];
@@ -424,23 +420,28 @@ class User extends Api
         $free=$userInfo->money;
         return $this->success('',['free'=>$free]);
     }
-
-    /**
-     * 绑定支付宝
-     */
     public function bindAli(){
         $user=$this->auth->getUser();
+        $data=[
+            'name'=>input('name','','trim'),
+            'payee_account'=>input('payee_account','','trim')
+        ];
+        $validate=new \app\api\validate\Bank();
+        $validate->scene('ali');
+        if(!$validate->check($data)){
+            return $this->error($validate->getError());
+        }
         $model=new Bank();
-        $b=$model->where(['uid'=>$user->id])->find();
-        $data=['uid'=>$user->id,'name'=>input('name')];
+        $b=$model->where(['uid'=>$user->id])
+            ->find();
         if(empty($b)){
-            $model->allowField(true)
-                ->isUpdate(false)
+            $model->isUpdate(false)
+                ->allowField(true)
                 ->save($data);
         }else{
-            $b->name=input('name');
-            $b->save();
+            $b->allowField(true)
+                ->save($data);
         }
-        return $this->success('修改成功');
+        return $this->success('',$data);
     }
 }

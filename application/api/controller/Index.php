@@ -29,7 +29,6 @@ class Index extends Api
        }else{
            $date=date('Y-m-d');
        }
-
        $hasWhere=['type'=>$type];
         if(!empty($my)){
             $userInfo=$this->auth->getUser();
@@ -37,15 +36,15 @@ class Index extends Api
                 return $this->success('',[]);
             }
             $owner=unserialize($this->auth->owner);
+            $owner=empty($owner)?[]:$owner;
             $ids=array_keys($owner);
             $hasWhere['category.diyname']=['in',$ids];
         }
-       $shares=Shares::where(['date'=>['<=',$date]])
-           ->where($hasWhere)
+       $shares=Shares::where($hasWhere)
            ->page($page,10)
-           ->order(['date'=>'desc'])
            ->with('detail,category')
-           ->group('cid')
+           ->join("(select id,max(date) MaxDate from fa_shares where date<='{$date}' group by id) a",
+               'shares.id=a.id and shares.date=a.MaxDate')
            ->select();
        $flip=config('site.categorytype');
        $tmp=[];
@@ -71,6 +70,7 @@ class Index extends Api
                 return $this->success('',['count'=>0]);
             }
             $owner=unserialize($this->auth->owner);
+            $owner=empty($owner)?[]:$owner;
             $ids=array_keys($owner);
             $count->where(['diyname'=>['in',$ids]]);
         }
