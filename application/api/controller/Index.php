@@ -24,7 +24,7 @@ class Index extends Api
        $page=input('page',1,'intval');
         $my=input('my',0);
        $current=date('Hi');
-       if(strcmp($current,'0930')<0){
+       if(strcmp($current,'0600')<0){
            $date=date('Y-m-d',strtotime('-1 day'));
        }else{
            $date=date('Y-m-d');

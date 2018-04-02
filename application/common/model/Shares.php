@@ -28,7 +28,7 @@ class Shares extends Model
         }catch (\Exception $e){
             $c=array_pop($data);
         }
-        return $c;
+        return array_pop($c);
     }
     public function detail(){
         return $this->hasOne('SharesDetail','id','id');
@@ -47,9 +47,10 @@ class Shares extends Model
             return false;
         }
         //从每天 上午9点半到下午3点半,分钟
-        $tmp=date($this->getData('date').' 09:30:00');
+        //修改成上午6点到晚上8点
+        $tmp=date($this->getData('date').' 06:00:00');
         $t=strtotime($tmp);
-        $s=strtotime(date($this->getData('date').' 15:30:00'));
+        $s=strtotime(date($this->getData('date').'20:00:00'));
         $intval=intval(($s-$t)/60);
         $start=new \DateTime();
         $start->setTimestamp($t);
@@ -58,12 +59,15 @@ class Shares extends Model
         $open_price=$this->getData('open_price');
         $max=empty($this->getData('maxprice'))?$category->getData('maxprice'):$this->getData('maxprice');
         $min=empty($this->getData('minprice'))?$category->getData('minprice'):$this->getData('minprice');
-        $data=['0930'=>$open_price];
         $m1=new \DateInterval('PT1M');
-        $high1=50+$flag;
-        $high2=-50+$flag;
+        //减去1min
+        $start->sub($m1);
+        $high1=47+$flag;
+        $high2=-53+$flag;
         $hhh=array_merge(range($high2,0),range(0,$high1));
         $last_price=$open_price;
+        $shareMin=99999;
+        $shareMax=0;
         for($i=0;$i<$intval;$i++){
             shuffle($hhh);
             $start->add($m1);
@@ -82,7 +86,23 @@ class Shares extends Model
                 $k=$min;
                 $flag=1;
             }
-            $data[$start->format('Hi')]=$k;
+            //每分钟的开始,结束,最高,最低,走势线
+            $tmpM=[$k*mt_rand(90,110)/100,$k*mt_rand(90,110)/100,$k*mt_rand(90,110)/100,$k*mt_rand(90,110)/100];
+            sort($tmpM);
+            $mm=mt_rand(1,2);
+            $data[$start->format('Hi')]=[
+                $tmpM[$mm],
+                $tmpM[3-$mm],
+                $tmpM[3],
+                $tmpM[0],
+                $k
+            ];
+            if($shareMax<$tmpM[3]){
+                $shareMax=$tmpM[3];
+            }
+            if($shareMin>$tmpM[0]){
+                $shareMin=$tmpM[0];
+            }
             $last_price=$k;
         }
         $save=['id'=>$this->getData('id'),'date'=>$this->getData('date'),'data'=>$data];
@@ -93,14 +113,18 @@ class Shares extends Model
         }else{
             $detail->allowField(true)->save($save);
         }
+        $share_data=['endprice'=>$last_price/100];
+        if(empty($this->getData('maxprice')) && empty($this->getData('minprice'))){
+            $share_data['maxprice']=$shareMax/100;
+            $share_data['minprice']=$shareMin/100;
+        }
         $this->isUpdate(true)
-            ->save(['endprice'=>$last_price/100]);
+            ->save($share_data);
         $nextDay=new \Datetime($this->getData('date'));
-        $ttt=new \DateInterval('P1D');
-        $nextDay->add($ttt);
+        $nextDay->add(new \DateInterval('P1D'));
         $save=['date'=>$nextDay->format('Y-m-d'),'open_price'=>$last_price,'endprice'=>0,'maxprice'=>0,'minprice'=>0,
             'cid'=>$this->getData('cid')];
-        $next=$this->find(['cid'=>$save['cid'],'date'=>$save['date']]);
+        $next=$this->where(['cid'=>$save['cid'],'date'=>$save['date']])->find();
         if(empty($next)){
             $this->insert($save);
         }

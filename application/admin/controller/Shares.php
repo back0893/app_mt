@@ -98,7 +98,7 @@ class Shares extends Backend
             $value=[];
             foreach ($data as $time=>$price){
                 $key[]=substr($time,0,2).':'.substr($time,2);
-                $value[]=$price;
+                $value[]=number_format($price[4]/100,2);
             }
             return $this->success('','',['key'=>$key,'value'=>$value,'name'=>$model->category->name]);
         }
@@ -130,5 +130,14 @@ class Shares extends Backend
             $model->makeDetail();
         }
         return $this->success();
+    }
+    public function test(){
+        $model=new \app\common\model\Shares();
+        $r=$model->alias('a')
+            ->join('(select `cid`,max(`date`) as `date` from `fa_shares` group by `cid`) b','a.cid=`b`.`cid` and `b`.`date`=`a`.`date`')
+            ->select();
+        foreach ($r as $share){
+           var_dump($share->category->flag);
+        }
     }
 }
