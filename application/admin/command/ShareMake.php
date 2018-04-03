@@ -21,8 +21,7 @@ class ShareMake extends Command
     }
     protected function execute(Input $input,Output $output){
         if(!in_array(date('w'),[0,6])){
-            $model=new Shares();
-            $shares=$model->alias('a')
+            $shares=Shares::alias('a')
                 ->join('(select `cid`,max(`date`) as `date` from `fa_shares` group by `cid`) b','a.cid=b.cid and b.date=a.date')
                 ->select();
             foreach ($shares as $share){

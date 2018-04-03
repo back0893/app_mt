@@ -21,7 +21,7 @@ class ShowK
             if($count==$type){
                 $tmp=array_map(function($value){
                     return sprintf('%.2f',$value/100);
-                },array_slice($price,0,4));
+                },$price);
                 $key[]=$date.' '.substr($time,0,2).':'.substr($time,2);
                 $value[] = $tmp;
                 $count=0;

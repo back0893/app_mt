@@ -62,8 +62,8 @@ class Shares extends Model
         $m1=new \DateInterval('PT1M');
         //减去1min
         $start->sub($m1);
-        $high1=47+$flag;
-        $high2=-53+$flag;
+        $high1=50+$flag;
+        $high2=-50+$flag;
         $hhh=array_merge(range($high2,0),range(0,$high1));
         $last_price=$open_price;
         $shareMin=99999;
@@ -73,7 +73,7 @@ class Shares extends Model
             $start->add($m1);
             $go=$hhh[array_rand($hhh)]>0?1:-1;
             if($go==-1){
-                $t=rand(1,4);
+                $t=rand(1,3);
             }else{
                 $t=rand(1,3);
             }
@@ -89,6 +89,9 @@ class Shares extends Model
             //每分钟的开始,结束,最高,最低,走势线
             $tmpM=[$k*mt_rand(90,110)/100,$k*mt_rand(90,110)/100,$k*mt_rand(90,110)/100,$k*mt_rand(90,110)/100];
             sort($tmpM);
+            $tmpM=array_map(function($value){
+                return intval($value);
+            },$tmpM);
             $mm=mt_rand(1,2);
             $data[$start->format('Hi')]=[
                 $tmpM[$mm],
@@ -122,10 +125,10 @@ class Shares extends Model
             ->save($share_data);
         $nextDay=new \Datetime($this->getData('date'));
         $nextDay->add(new \DateInterval('P1D'));
-        $save=['date'=>$nextDay->format('Y-m-d'),'open_price'=>$last_price,'endprice'=>0,'maxprice'=>0,'minprice'=>0,
-            'cid'=>$this->getData('cid')];
+        $save=['date'=>$nextDay->format('Y-m-d'),'open_price'=>$last_price/100,'endprice'=>0,'maxprice'=>0,'minprice'=>0, 'cid'=>$this->getData('cid')];
         $next=$this->where(['cid'=>$save['cid'],'date'=>$save['date']])->find();
         if(empty($next)){
+            $save['open_price']= $save['open_price']*100;
             $this->insert($save);
         }
        else{
