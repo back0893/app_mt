@@ -51,8 +51,12 @@ class User extends Api
         {
             $data = ['userinfo' => $this->auth->getUserinfo()];
             $row=Bank::get(['uid'=>$this->auth->id]);
-            $bank=$row->allowField(['code','name','user_code'])
-                ->toArray();
+            if(empty($row)){
+                $bank=['code'=>'','name'=>'','user_code'=>''];
+            }else{
+                $bank=$row->allowField(['code','name','user_code'])
+                    ->toArray();
+            }
             $data['bank']=$bank;
             $this->success(__('Logged in successful'), $data);
         }
